@@ -45,6 +45,7 @@ body
 
 h1, h2, h3
 {
+    text-align: center;
     line-height: 1.3;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -52,6 +53,20 @@ h1, h2, h3
 
 .information p 
 {
+    margin: 3%;
+    margin-bottom: 1rem;
+}
+
+.about-me
+{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 3%;
+    margin-bottom: 1rem;
+}
+
+.contact
+{
+    font-family: 'Times New Roman', Times, serif;
     margin: 3%;
     margin-bottom: 1rem;
 }

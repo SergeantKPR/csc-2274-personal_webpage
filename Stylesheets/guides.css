@@ -1,1 +1,59 @@
 /* TO DO: Create Stylesheets for all the guides */
+html, body
+{
+    height: 100%;
+    margin: 0px;
+}
+
+body
+{
+    font-family: Brush Script MT;
+    font-size: 32px;
+    word-spacing: 10px;
+    background:
+        url("../Images/oldpaper-noise-map.jpg"),
+        radial-gradient(circle at 15% 25%, rgba(198, 160, 91, 0.3), transparent 65%),
+        radial-gradient(circle at 80% 20%, rgba(230, 211, 140, 0.434), transparent 60%),
+        radial-gradient(circle at 40% 70%, rgba(150, 120, 60, 0.25), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(210, 180, 120, 0.478), transparent 70%),
+        radial-gradient(circle at 30% 50%, rgba(200, 170, 100, 0.562), transparent 60%),
+        radial-gradient(circle at 85% 60%, rgba(170, 141, 90, 0.343), transparent 65%),
+        radial-gradient(circle at 55% 30%, rgba(240, 220, 160, 0.165), transparent 70%),
+        linear-gradient(86deg,#DA990B,
+                              #E19F0A,
+                              #E2A411,
+                              #E7AD25,
+                              #E5AB25,
+                              #F2C76B,
+                              #F0C873,
+                              #EFBB41,
+                              #EEBD57,
+                              #F1C057,
+                              #F4C963,
+                              #F2C866,
+                              #EFC362,
+                              #F2C76B,
+                              #EFBB41,
+                              #EEBD57,
+                              #F0C873,
+                              #E8BD6F);
+    background-blend-mode: multiply;
+    background-size: cover, auto, auto, auto, auto, auto, auto, auto, auto, cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1, h2, h3
+{
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+header, footer
+{
+    font-family: sans-serif;
+    font-size: 16px;
+    word-spacing: normal;
+}
