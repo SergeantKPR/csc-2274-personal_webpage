@@ -2,8 +2,18 @@
 async function loadHTML(id, file)
 {
     const el = document.getElementById(id);
-    const resp = await fetch(file);
-    el.innerHTML = await resp.text();
+    try
+    {
+        const resp = await fetch(file);
+        if(!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`)
+        const text = await resp.text();
+        console.log(`Loaded ${file} into #${id}`)
+        el.innerHTML = text;
+    }
+    catch (err)
+    {
+        console.error(`Failed to load ${file}:`, err)
+    }
 }
 
 //Load the HTMLs

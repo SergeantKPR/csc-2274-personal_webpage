@@ -1,1 +1,30 @@
 /* TO DO: Fill out header stylesheet */
+header{display: block;}
+
+.topbar 
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.topbar li 
+{
+    float: left;
+}
+
+.topbar li a 
+{
+    display: block;
+    color: whitesmoke;
+    text-align: center;
+    padding: 15px 12px;
+    text-decoration: none;
+}
+
+.topbar li a:hover 
+{
+    background-color: #333;
+}
