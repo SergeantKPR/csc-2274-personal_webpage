@@ -3,28 +3,32 @@ header{display: block;}
 
 .topbar 
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: black;
+    flex-wrap: wrap;
 }
 
 .topbar li 
 {
-    float: left;
+    margin: 0;
 }
 
 .topbar li a 
 {
     display: block;
-    color: whitesmoke;
-    text-align: center;
+    height: 25px;
     padding: 15px 12px;
+    margin: 5px;
     text-decoration: none;
+    color: #000;
+    text-align: center;
 }
 
 .topbar li a:hover 
 {
-    background-color: #333;
+    background-color: #eff;
 }
