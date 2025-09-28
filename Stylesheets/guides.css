@@ -1,13 +1,14 @@
-/* TO DO: Create Stylesheets for all the guides */
-html, body
+/* TO DO: Fill out main stylesheet */
+html, body 
 {
-    height: 100%;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
 body
 {
-    font-family: Brush Script MT;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 32px;
     word-spacing: 10px;
     background:
@@ -41,11 +42,105 @@ body
     background-size: cover, auto, auto, auto, auto, auto, auto, auto, auto, cover;
     background-repeat: no-repeat;
     background-position: center;
-
-    /* Text readability */
-    margin: 3%;
-    margin-bottom: 1rem;
 }
+
+.hero
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(149, 41, 2);
+    text-shadow: #DA990B 1px 1px 2px, #E19F0A 0 0 25px, #E2A411 0 0 5px;
+    overflow: hidden;
+}
+
+.hero > h1
+{
+    position: relative;
+    z-index: 1;
+    transform: translateY(var(--title-shift, 0));
+    transition: transform 0.1s linear;
+}
+
+.hero::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: center/cover no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.hero::after
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    z-index: -1;
+    pointer-events: none; /* Allow clicks to pass through */
+    mix-blend-mode: multiply;
+
+}
+
+.hero-stop 
+{
+      position: relative;
+      height: 25%; /* Shorter than full screen */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(149, 41, 2);
+      text-shadow: #DA990B 1px 1px 2px, #E19F0A 0 0 25px, #E2A411 0 0 5px;
+      text-align: center;
+}
+
+#class-job
+{
+    background: url("../Images/jobs.jpg") center/cover no-repeat;
+    height: 675px;
+    background-attachment: fixed;
+}
+
+#content-guide
+{
+    background: url("../Images/the-twinning.png") center/cover no-repeat;
+    height: 576px;
+    background-attachment: fixed;
+}
+
+#farming-guide
+{
+    background: url("../Images/farmingMeme.png") center/cover no-repeat;
+    height: 760px;
+    background-attachment: fixed;
+}
+
+#market-guide
+{
+    background: url("../Images/marketboard.jpg") center/cover no-repeat;
+    height: 675px;
+    background-attachment: fixed;
+}
+
+#rec-job-guide
+{
+    background: url("../Images/craftingjobs.png") center/cover no-repeat;
+    height: 675px;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 
 h1, h2, h3
 {
@@ -61,3 +156,18 @@ header, footer
     font-size: 16px;
     word-spacing: normal;
 }
+
+#footer 
+{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+
+  /* Attempting to keep the background without clipping into content */
+  backdrop-filter: blur(5px);
+}
+
+#page-content {padding-bottom: 60px; /* Padding footer to avoid clipping */}

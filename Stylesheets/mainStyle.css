@@ -1,13 +1,14 @@
 /* TO DO: Fill out main stylesheet */
-html, body
+html, body 
 {
-    height: 100%;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
 body
 {
-    font-family: Brush Script MT;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 32px;
     word-spacing: 10px;
     background:
@@ -43,6 +44,69 @@ body
     background-position: center;
 }
 
+.hero
+{
+    position: relative;
+    height: 588px; /* Full screen hero */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(149, 41, 2);
+    text-shadow: #DA990B 1px 1px 2px, #E19F0A 0 0 25px, #E2A411 0 0 5px;
+    overflow: hidden;
+}
+
+.hero > h1
+{
+    position: relative;
+    z-index: 1;
+    transform: translateY(var(--title-shift, 0));
+    transition: transform 0.1s linear;
+}
+
+.hero::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 588px;
+    background: url("../Images/Eorzea.jpg") center/cover no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.hero::after
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 294px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    z-index: -1;
+    pointer-events: none; /* Allow clicks to pass through */
+    mix-blend-mode: multiply;
+
+}
+
+.hero-stop 
+{
+      position: relative;
+      height: 294px; /* Shorter than full screen */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(149, 41, 2);
+      text-shadow: #DA990B 1px 1px 2px, #E19F0A 0 0 25px, #E2A411 0 0 5px;
+      text-align: center;
+}
+
+
 h1, h2, h3
 {
     text-align: center;
@@ -71,9 +135,25 @@ h1, h2, h3
     margin-bottom: 1rem;
 }
 
+/* Header and Footer Text Styling */
 header, footer
 {
     font-family: sans-serif;
     font-size: 16px;
     word-spacing: normal;
 }
+
+#footer 
+{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+
+  /* Attempting to keep the background without clipping into content */
+  backdrop-filter: blur(5px);
+}
+
+#page-content {padding-bottom: 60px; /* Padding footer to avoid clipping */}
