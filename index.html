@@ -11,16 +11,12 @@
         <!-- Stylesheet for main page -->
         <link rel="stylesheet" href="Stylesheets/mainStyle.css">
 
-        <!-- JavaScript for title shifting effect -->
-        <script src="Scripts/title-shifting-hero.js"></script>
-
     </head>
 
     <body class="encyclopedia-main">
         <div id="header"></div>
 
-        <main id="page-content">
-            <div class="title-section">
+        <div class="title-section">
                 <section class="hero">
                     <h1>The Eorzean Encyclopedia</h1>
                 </section>
@@ -30,8 +26,8 @@
                         <h2>A collection of information and guides made for players struggling in Final Fantasy XIV Online</h2>
                     </div>
                 </section>
-            </div>
-            
+        </div>
+        <main id="page-content">
             <div class="information">
                 <p>
                     The Eorzean Encyclopedia is written by players for players of Final Fantasy XIV Online.<br>
@@ -45,42 +41,69 @@
                 </p>
             </div>
 
-            <!-- Guides container TO DO -->
-            <div class="guides">
-                <!-- Gameplay(Content) Guide container -->
-                <div id="content-guide">
+            <!-- Guides container as cards -->
+             <div class="card-content">
+                <div class="cards">
+                    <!-- Gameplay(Content) Guide container -->
+                    <div id="content-guide" class="guide-card">
+                        <img id="content-image" alt="Gameplay Content Guide">
+                        <h4>Gameplay Content Guide</h4>
+                        <p>A guide to the various gameplay content available in Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
 
-                </div>
+                    <!-- Combat Job Guide container -->
+                    <div id="combat-job-guide" class="guide-card">
+                        <img id="combat-job-image" alt="Combat Job Guide">
+                        <h4>Combat Job Guide</h4>
+                        <p>Many guides to the various combat jobs in Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
 
-                <!-- Combat Job Guide container -->
-                <div id="combat-job-guide">
+                    <!-- Recreational Guide container -->
+                    <div id="rec-job-guide" class="guide-card">
+                        <img id="rec-job-image" alt="Recreational Job Guide">
+                        <h4>Recreational Job Guides</h4>
+                        <p>Many guides to the various other jobs available in Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
 
-                </div>
+                    <!-- Marketboard Guide container -->
+                    <div id="marketboard-guide" class="guide-card">
+                        <img id="marketboard-image" alt="Marketboard Guide">
+                        <h4>Marketboard Guide</h4>
+                        <p>A guide in how to best utilize the marketboard in Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
+                    <!-- Farming Guide container -->
+                    <div id="farming-guide" class="guide-card">
+                        <img id="farming-image" alt="Farming Guide">
+                        <h4>Farming Guides</h4>
+                        <p>A guide to the various ways to farm in Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
 
-                <!-- Recreational Guide container -->
-                <div id="rec-job-guide">
-
-                </div>
-
-                <!-- Marketboard Guide container -->
-                <div id="marketboard-guide">
-
-                </div>
-                <!-- Farming Guide container -->
-                <div id="farming-guide">
-
-                </div>
-
-                <!-- Miscellaneous Guide container -->
-                <div id="misc-guide">
-
+                    <!-- Miscellaneous Guide container -->
+                    <div id="misc-guide" class="guide-card">
+                        <img id="misc-image" alt="Miscellaneous Guide">
+                        <h4>Miscellaneous Guides</h4>
+                        <p>Various Guides of Uncategorized aspects of Final Fantasy XIV Online.</p>
+                        <button>Click to view more</button>
+                    </div>
                 </div>
             </div>
             
         </main>
 
         <div id="footer"></div>
-        
+
+         <!-- JavaScript for title shifting effect -->
+        <script src="Scripts/title-shifting-hero.js"></script>
+
+        <!-- JavaScript for loading buttons -->
+        <script src="Scripts/buttonLoader.js"></script>
+
+        <!-- JavaScript for loading header and footer -->
         <script src="Scripts/loadHTML.js"></script>
 
     </body>

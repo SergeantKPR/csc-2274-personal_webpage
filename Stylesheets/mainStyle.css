@@ -44,6 +44,8 @@ body
     background-position: center;
 }
 
+/* HERO STYLING TO MIMIC PRARALAX SCROLLING EFFECT */
+
 .hero
 {
     position: relative;
@@ -106,6 +108,8 @@ body
       text-align: center;
 }
 
+/* Content Styling */
+
 
 h1, h2, h3
 {
@@ -157,3 +161,122 @@ header, footer
 }
 
 #page-content {padding-bottom: 60px; /* Padding footer to avoid clipping */}
+
+
+/* Flex and Grid */
+
+.card-content
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Formatting Cards into 2 distinct columns */
+.cards 
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card-content div
+{
+    color: rgba(55, 55, 55, 0.845);
+    padding: 10px;
+}
+
+/* Guide Card Formatting */
+.guide-card
+{
+    flex: 1 1 calc(50% - 20px);
+    margin: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Adding a background that can use a filter without disturbing the rest of the elements */
+.guide-card::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../Images/backgroundImg.jpg") center/cover no-repeat;
+    filter: grayscale(0.5%) brightness(95%);
+    z-index: -1;
+
+}
+
+/* Positioning all guide card elements above the background */
+.guide-card *
+{
+    position: relative;
+    z-index: 1;
+}
+
+/* Guide Card Images Formatting */
+.guide-card > img
+{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/* Guide Card Images */
+#content-image
+{
+    content: url("../Images/the-twinning.png");
+}
+#combat-job-image
+{
+    content: url("../Images/jobs.jpg");
+}
+#rec-job-image
+{
+    content: url("../Images/craftingjobs.png");
+}
+#marketboard-image
+{
+    content: url("../Images/marketboard.jpg");
+}
+#farming-image
+{
+    content: url("../Images/farmingMeme.png");
+}
+#misc-image
+{
+    content: url("../Images/miscellaneous.png");
+}
+
+/* Guide Cards Button Formatting */
+.guide-card > button
+{
+    margin-top: 0px;
+    background: rgb( 43, 12, 153);
+    color: rgba(255, 255, 255, 0.522);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    font-size: 14px;
+
+}
+
+/* Guide Card Text Formatting */
+.guide-card > p
+{
+    font-size: 14px;
+    font-weight: 900;
+    font-family:'Courier New', Courier, monospace;
+}

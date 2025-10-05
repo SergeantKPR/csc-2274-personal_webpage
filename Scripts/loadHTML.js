@@ -1,13 +1,32 @@
 //Function to load the HTML based on div id and the file name
 async function loadHTML(id, file)
 {
+    //Check for the element first before attempting to load
     const el = document.getElementById(id);
+    if (!el)
+    {
+        console.error(`Element with id "${id}" not found.`);
+        return;
+    }
     try
     {
-        const resp = await fetch(file);
-        if(!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`)
+        //Attempt to fetch the file
+        let resp = await fetch(file);
+        //If the fetch fails, try adjusting the path then refetch
+        if (!resp.ok)
+            {
+                console.warn(`Initial fetch failed (${resp.status}), trying path adjustment`);
+                const path = getPath(file);
+                console.log(`Adjusted path: ${path}`);
+                resp = await fetch(path);
+            }
+        //If the fetch still fails, throw an error
+        if(!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`);
+
+        //Get the text and insert it into the element
         const text = await resp.text();
-        console.log(`Loaded ${file} into #${id}`)
+        //Log the results
+        console.log(`Loaded ${file} into #${id}`);
         el.innerHTML = text;
     }
     catch (err)
@@ -16,6 +35,13 @@ async function loadHTML(id, file)
     }
 }
 
+//Function to adjust the path based on the current location depth
+function getPath(file)
+{
+    const depth = window.location.pathname.split("/").length - 2;
+    return "../".repeat(depth) + file;
+}
+
 //Load the HTMLs
-loadHTML("header", "../header.html");
-loadHTML("footer", "../footer.html");
+loadHTML("header", "header.html");
+loadHTML("footer", "footer.html");

@@ -1,3 +1,4 @@
+/* Event Listener to Shift H1 element to feel more fluid */
 window.addEventListener('scroll',() => 
     {
         const hero = document.querySelector('.hero');
@@ -8,6 +9,6 @@ window.addEventListener('scroll',() =>
 
         const progress = 1 - (rect.bottom / windowHeight);
 
-        const shift = progress * 150; // Adjust multiplier for more/less shift
+        const shift = progress * 150; // Adjust multiplier for more/less shift <-- Personal note
         h1.style.setProperty('--title-shift', `${shift}px`);
     });
