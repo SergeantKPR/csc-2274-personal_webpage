@@ -1,5 +1,5 @@
 //Function to load the HTML based on div id and the file name
-async function loadHTML(id, file)
+async function loadHTML(id, file, callback)
 {
     //Check for the element first before attempting to load
     const el = document.getElementById(id);
@@ -26,8 +26,14 @@ async function loadHTML(id, file)
         //Get the text and insert it into the element
         const text = await resp.text();
         //Log the results
-        console.log(`Loaded ${file} into #${id}`);
         el.innerHTML = text;
+        console.log(`Loaded ${file} into #${id}`);
+
+        if(callback && typeof callback === 'function')
+            {
+                callback();
+            }
+        
     }
     catch (err)
     {
@@ -43,5 +49,15 @@ function getPath(file)
 }
 
 //Load the HTMLs
-loadHTML("header", "header.html");
+loadHTML("header", "header.html", () => 
+    {
+        //load header's script
+        const script = document.createElement('script');
+        script.src = "/Scripts/headerFunctions.js";
+        script.onload = () => 
+            {
+                initHeader();
+            };
+        document.body.appendChild(script);
+    });
 loadHTML("footer", "footer.html");

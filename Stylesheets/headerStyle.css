@@ -1,34 +1,150 @@
-/* TO DO: Fill out header stylesheet */
-header{display: block;}
-
-.topbar 
+.scene 
 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.scene img 
+{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.background,
+.overlay 
+{
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.overlay 
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.tabs
+{
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
+    transform: translateX(-50%);
+    gap: 1.2rem;
+    z-index: 5;
 }
 
-.topbar li 
+.tab 
 {
-    margin: 0;
+    /* Linked variables exclusive to tab here instead of root */
+    --tab-pos: 0%;
+    --tab-active-text: rgb(40, 255, 16);
+    position: relative;
+    background: #aaafb4;
+    color: #3f3b3b;
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    padding: 10px 20px;
+    transform: translateY(var(--tab-pos));
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.topbar li a 
+/* Tab translates */
+#tab1
 {
-    display: block;
-    height: 25px;
-    padding: 15px 12px;
-    margin: 5px;
-    text-decoration: none;
-    color: #000;
-    text-align: center;
+    --tab-pos: -145%;
 }
 
-.topbar li a:hover 
+#tab2
 {
-    background-color: #eff;
+    --tab-pos: -135%; 
+}
+
+#tab3
+{
+    --tab-pos: -113%;
+}
+
+#tab4
+{
+    --tab-pos: -115%;
+}
+
+#tab5
+{
+    --tab-pos: -132%;
+}
+
+#tab6
+{
+    --tab-pos: -139%;
+}
+
+#tab7
+{
+    --tab-pos: -136%;
+}
+
+#tab8
+{
+    --tab-pos: -140%;
+}
+
+#tab9
+{
+    --tab-pos: -130%;
+}
+
+.topbar
+{
+    display: none;
+}
+
+/* Tab hover animation */
+.tab:hover 
+{
+    transform: translateY(calc(var(--tab-pos) - 1%)) scale(1.05);
+    background: linear-gradient(to bottom, #d94c4c, #a62222);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Active tab stays raised */
+.tab.active 
+{
+    background: linear-gradient(to bottom, #cc3333, #992222);
+    color: var(--tab-active-text);
+}
+
+.tab::after 
+{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: inherit;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Z-Index Shenanigans */
+.background
+{
+    z-index: 1;
+}
+
+.overlay
+{
+    z-index: 3;
 }

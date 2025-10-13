@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <meta lang="en-US">
 
-<header><link rel="Stylesheet" href="/Stylesheets/headerStyle.css"></header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" href="/Stylesheets/headerStyle.css">
+</head>
 
-<header>
-    <ul class="topbar">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="/Guides/content-guide.html">Content Guide</a></li>
-        <li><a href="/Guides/class-job-guide.html">Combat Job Guide</a></li>
-        <li><a href="/Guides/rec-job-guide.html">Recreational Job Guide</a></li>
-        <li><a href="/Guides/market-guide.html">Marketboard Guide</a></li>
-        <li><a href="/Guides/farming-guide.html">Farming Guide</a></li>
-        <li><a href="/Guides/misc-guide.html">Miscellaneous Guide</a></li>
-        <li><a href="/Author Info/about-me.html">About Me</a></li>
-        <li><a href="/Author Info/contact.html">Contact Me</a></li>
+<body>
+    <div class="header-container">
+        <div class = "scene">
+
+            <img src="/Images/background.png" class="layer background" alt="header_image_Norvrandt">
+        
+            <!-- Bookmarks (visible when image loads) -->
+            <div class="tabs">
+                <div id="tab1" class="tab active" data-link="../index.html">Home Page</div>
+                <div id="tab2" class="tab" data-link="/Guides/content-guide.html">Content Guides</div>
+                <div id="tab3" class="tab" data-link="/Guides/class-job-guide.html">Combat Job Guide</div>
+                <div id="tab4" class="tab" data-link="/Guides/rec-job-guide.html">Recreational Job Guide</div>
+                <div id="tab5" class="tab" data-link="/Guides/market-guide.html">Marketboard Guide</div>
+                <div id="tab6" class="tab" data-link="/Guides/farming-guide.html">Farming Guide</div>
+                <div id="tab7" class="tab" data-link="/Guides/misc-guide.html">Miscellaneous Guides</div>
+                <div id="tab8" class="tab" data-link="/Author Info/about-me.html">About Me</div>
+                <div id="tab9" class="tab" data-link="/Author Info/contact.html">ContactMe</div>
+            </div>
+
+            <img src="/Images/bookOverlayBG.png" class="layer overlay" alt="Book Overlay">
+        </div>
+
+
+
+        <!-- Fallback List if image fails to load -->
+        <ul class="topbar">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="/Guides/content-guide.html">Content Guide</a></li>
+            <li><a href="/Guides/class-job-guide.html">Combat Job Guide</a></li>
+            <li><a href="/Guides/rec-job-guide.html">Recreational Job Guide</a></li>
+            <li><a href="/Guides/market-guide.html">Marketboard Guide</a></li>
+            <li><a href="/Guides/farming-guide.html">Farming Guide</a></li>
+            <li><a href="/Guides/misc-guide.html">Miscellaneous Guide</a></li>
+            <li><a href="/Author Info/about-me.html">About Me</a></li>
+            <li><a href="/Author Info/contact.html">Contact Me</a></li>
     </ul>
-</header>
+    </div>
+</body>
+
+<!--  Javascript for responsiveness of tabs -->
+  <script src="../Scripts/headerFunctions.js"></script>
