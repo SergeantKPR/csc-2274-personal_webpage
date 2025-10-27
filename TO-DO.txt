@@ -1,0 +1,23 @@
+Notes about 1-On-1:
+- Schedule more time to discuss
+- Too much all at once
+- Fix issues with the tabs not loading (Can think of a method)
+
+Overarching take-away:
+Move back to simplistic way of handling the page
+
+
+9/16/2025 - TO DO:
+    Hide all pre-existing tab elements behind a blank canvas (hide it in HTML and CSS) [DONE]
+    Rewire tabs to be like the old classwork [DONE]
+    Apply padding to text elements to make the readability work [DONE]
+    Hero needs to be first (Maybe linking to specific point on page?) <--- <a href="#div-id"> works wonders here [DONE]
+
+9/23/2025 - TO DO:
+    Apply Form HTML code to "Contact Us" [NOT DONE]
+    Rewatch Class Video for proper explanation and expectations [NOT DONE]
+    Pages to add content to:
+        - class-job-guide.html -> Add in 3 Div containers for the 3 subclasses [NOT DONE]
+        - content-guide.html -> Not Sure Yet [DO NOT ATTEMPT YET]
+        - rec-job-guide.html -> Add more information about the two classes in their own Divs [NOT DONE]
+

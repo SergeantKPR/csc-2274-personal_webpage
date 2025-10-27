@@ -51,13 +51,25 @@ function getPath(file)
 //Load the HTMLs
 loadHTML("header", "header.html", () => 
     {
-        //load header's script
-        const script = document.createElement('script');
-        script.src = "/Scripts/headerFunctions.js";
-        script.onload = () => 
+        loadHTML("header", "header.html", () => 
+        {
+            const script = document.createElement("script");
+            script.src = "/Scripts/headerFunctions.js";
+            script.onload = () => 
             {
                 initHeader();
+
+                // Scroll to hash after the header is injected <-- rectifies issues with not seeing content on load
+                if (window.location.hash) 
+                {
+                    setTimeout(() => 
+                    {
+                        const target = document.querySelector(window.location.hash);
+                        if (target) target.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                }
             };
-        document.body.appendChild(script);
+            document.body.appendChild(script);
+        });
     });
 loadHTML("footer", "footer.html");

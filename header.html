@@ -8,43 +8,38 @@
 </head>
 
 <body>
-    <div class="header-container">
+    <div id="header-container">
         <div class = "scene">
 
             <img src="/Images/background.png" class="layer background" alt="header_image_Norvrandt">
-        
-            <!-- Bookmarks (visible when image loads) -->
-            <div class="tabs">
-                <div id="tab1" class="tab active" data-link="../index.html">Home Page</div>
-                <div id="tab2" class="tab" data-link="/Guides/content-guide.html">Content Guides</div>
-                <div id="tab3" class="tab" data-link="/Guides/class-job-guide.html">Combat Job Guide</div>
-                <div id="tab4" class="tab" data-link="/Guides/rec-job-guide.html">Recreational Job Guide</div>
-                <div id="tab5" class="tab" data-link="/Guides/market-guide.html">Marketboard Guide</div>
-                <div id="tab6" class="tab" data-link="/Guides/farming-guide.html">Farming Guide</div>
-                <div id="tab7" class="tab" data-link="/Guides/misc-guide.html">Miscellaneous Guides</div>
-                <div id="tab8" class="tab" data-link="/Author Info/about-me.html">About Me</div>
-                <div id="tab9" class="tab" data-link="/Author Info/contact.html">ContactMe</div>
-            </div>
 
             <img src="/Images/bookOverlayBG.png" class="layer overlay" alt="Book Overlay">
+
+            <div class="topbar-div">
+                <div class="nav">
+                    <a href="../index.html#mainPage">Home</a>
+                    <div class="dropdown">
+                        <button class="dropBtn">Guides 
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+
+                        <div class="dropdown-content">
+                            <a href="/Guides/content-guide.html#content-guide">Content Guide</a>
+                            <a href="/Guides/class-job-guide.html#class-job">Combat Job Guide</a>
+                            <a href="/Guides/rec-job-guide.html#rec-job-guide">Recreational Job Guide</a>
+                            <a href="/Guides/market-guide.html#market-guide">Marketboard Guide</a>
+                            <a href="/Guides/misc-guide.html#page-content">Miscellaneous Guide</a>
+                            <a href="/Guides/farming-guide.html#farming-guide">Farming Guide</a>
+                        </div>
+                    </div>
+
+                    <a href="/Author%20Info/about-me.html#h1">About Me</a>
+                    <a href="/Author%20Info/contact.html#h1">Contact Me</a>
+                </ul>
+            </div>
         </div>
-
-
-
-        <!-- Fallback List if image fails to load -->
-        <ul class="topbar">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="/Guides/content-guide.html">Content Guide</a></li>
-            <li><a href="/Guides/class-job-guide.html">Combat Job Guide</a></li>
-            <li><a href="/Guides/rec-job-guide.html">Recreational Job Guide</a></li>
-            <li><a href="/Guides/market-guide.html">Marketboard Guide</a></li>
-            <li><a href="/Guides/farming-guide.html">Farming Guide</a></li>
-            <li><a href="/Guides/misc-guide.html">Miscellaneous Guide</a></li>
-            <li><a href="/Author Info/about-me.html">About Me</a></li>
-            <li><a href="/Author Info/contact.html">Contact Me</a></li>
-    </ul>
     </div>
 </body>
 
 <!--  Javascript for responsiveness of tabs -->
-  <script src="../Scripts/headerFunctions.js"></script>
+  <script src="../Scripts/headerFunctions.js" defer></script>

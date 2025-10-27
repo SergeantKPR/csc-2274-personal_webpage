@@ -20,7 +20,7 @@ async function buttonLoader()
                     case "combat-job-guide":
                         divButton.onclick = () => 
                             {
-                                location.href = "Guides/class-job-guide.html";
+                                location.href = "Guides/class-job-guide.html#class-job";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;
@@ -28,7 +28,7 @@ async function buttonLoader()
                     case "content-guide":
                         divButton.onclick = () =>
                             {
-                                location.href = "Guides/content-guide.html";
+                                location.href = "Guides/content-guide.html#content-guide";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;
@@ -36,7 +36,7 @@ async function buttonLoader()
                     case "rec-job-guide":
                         divButton.onclick = () =>
                             {
-                                location.href = "Guides/rec-job-guide.html";
+                                location.href = "Guides/rec-job-guide.html#rec-job-guide";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;
@@ -44,7 +44,7 @@ async function buttonLoader()
                     case "marketboard-guide":
                         divButton.onclick = () =>
                             {
-                                location.href = "Guides/market-guide.html";
+                                location.href = "Guides/market-guide.html#market-guide";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;
@@ -52,7 +52,7 @@ async function buttonLoader()
                     case "farming-guide":
                         divButton.onclick = () =>
                             {
-                                location.href = "Guides/farming-guide.html";
+                                location.href = "Guides/farming-guide.html#farming-guide";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;
@@ -60,7 +60,7 @@ async function buttonLoader()
                     case "misc-guide":
                         divButton.onclick = () =>
                             {
-                                location.href = "Guides/misc-guide.html";
+                                location.href = "Guides/misc-guide.html#misc-guide";
                             };
                         console.log(`Button for #${id} has been loaded`);
                         break;

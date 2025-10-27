@@ -1,12 +1,29 @@
 function initHeader()
 {
-    //Test logging
-    console.log("If you are reading this, then the function has executed successfully");
-    const headerImg = document.querySelector('.background');
-    const topbar = document.querySelector('.topbar');
-    const bookmarks = document.querySelector('.tabs');
-    const current = window.location.pathname;
+    window.addEventListener("load", () => 
+    {
+        console.log("Page loaded");
+        if (window.location.hash) 
+        {
+            setTimeout(() => 
+            {
+                const el = document.querySelector(window.location.hash);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 50);
+        }
+    });
 
+    document.querySelectorAll(".nav a").forEach(link => 
+    {
+        if (link.href === window.location.href) 
+        {
+            link.classList.add("active");
+        }
+    });
+    
+    
+
+    /*
     // Failsafe detection
     console.log("Checking for failed header image");
     if (!headerImg.complete || headerImg.naturalHeight === 0) 
@@ -44,6 +61,9 @@ function initHeader()
             tab.classList.remove('active');
         }
     });
+    */
+
+
 }
 
 // Normalize paths to avoid loose comparisons
