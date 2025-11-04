@@ -1,4 +1,8 @@
-//Function to load the HTML based on div id and the file name
+/**A function to load the HTML based on div id and the file path 
+ * @param id The ID of the div
+ * @param file The path for the file
+ * @param callback (Optional) the callback for the associated html file
+*/
 async function loadHTML(id, file, callback)
 {
     //Check for the element first before attempting to load
@@ -50,8 +54,6 @@ function getPath(file)
 
 //Load the HTMLs
 loadHTML("header", "header.html", () => 
-    {
-        loadHTML("header", "header.html", () => 
         {
             const script = document.createElement("script");
             script.src = "/Scripts/headerFunctions.js";
@@ -71,5 +73,4 @@ loadHTML("header", "header.html", () =>
             };
             document.body.appendChild(script);
         });
-    });
 loadHTML("footer", "footer.html");

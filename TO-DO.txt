@@ -14,10 +14,12 @@ Move back to simplistic way of handling the page
     Hero needs to be first (Maybe linking to specific point on page?) <--- <a href="#div-id"> works wonders here [DONE]
 
 9/23/2025 - TO DO:
-    Apply Form HTML code to "Contact Us" [NOT DONE]
-    Rewatch Class Video for proper explanation and expectations [NOT DONE]
+    Apply Form HTML code to "Contact Us" [DONE]
+    Rewatch Class Video for proper explanation and expectations [DONE]
     Pages to add content to:
         - class-job-guide.html -> Add in 3 Div containers for the 3 subclasses [NOT DONE]
         - content-guide.html -> Not Sure Yet [DO NOT ATTEMPT YET]
         - rec-job-guide.html -> Add more information about the two classes in their own Divs [NOT DONE]
 
+9/28/2025 - TO DO:
+    

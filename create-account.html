@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta lang="en-US">
+    <header>
+        <!-- Meta Data -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta description= "Template">
+        <!-- Title -->
+        <title>Eorzean Encyclopedia - Login</title>
+
+        <!-- Stylesheet for page -->
+        <link rel="Stylesheet" href="Stylesheets/mainStyle.css">
+    </header>
+
+    <body class="encyclopedia-main">
+        <div id="header"></div>
+
+        <main id="page-content">
+            <!-- Utilizing form for styling -->
+            <form class="create-account-form" method="POST">
+                <h1>Create an Account</h1>
+
+                <label for="username">
+                    Username:
+                    <input type="text" id="username" name="username" required>
+                </label>
+
+                <label for="email">
+                    Email:
+                    <input type="email" id="email" name="email" required>
+                </label>
+
+                <label for="password">
+                    Password:
+                    <input type="password" id="password" name="password" required>
+                </label>
+                <!-- Button does not connect to form, bypassing POST which gives HTML ERR 405 -->
+                <button type="button" id="createAcctBtn">Create Account</button>
+        </main>
+
+        <div id="footer"></div>
+        
+        <!-- Linking script to individual js file -->
+        <script src="/Scripts/loadHTML.js"></script>
+        <!-- Script to validate and create accounts -->
+        <script type="module" src="/Scripts/createAccount.js"></script>
+
+    </body>
