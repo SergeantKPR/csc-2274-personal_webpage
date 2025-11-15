@@ -1,4 +1,4 @@
-<!--   TO DO LIST    -->
+</li><!--   TO DO LIST    -->
 <!--
     - Add drop down list for content
     - Flesh out different fights
@@ -17,6 +17,7 @@
 
         <!-- Stylesheet for page -->
         <link rel="Stylesheet" href="../Stylesheets/guides.css">
+
     </header>
 
     <body class="encyclopedia-test">
@@ -26,28 +27,457 @@
             <section id="content-guide" class="hero">
                 <h1>Content Guides</h1>
             </section>
-            <div id="paragraph-one">
-                <p>The content guides offer insights on the numerous gameplay aspects implemented into Final Fantasy XIV Online. These are split into their own unique categories set by the game developers. These are:</p>
-                <ul numbered="false">
-                    <li>Dungeons - 4 player missions through unique, yet thematic areas</li>
-                    <li>Trials - 8 player challenges of tough bosses</li>
-                    <li>Extreme Trials - 8 player challenges of prior trials with more mechanics</li>
-                    <li>Unreal Trials - 8 player challenges of previous extreme trials at the current level capacity</li>
-                    <li>Raids - 8 man challenges, usually outside of the story</li>
-                    <li>Savage Raids - Hardmode versions of the raids</li>
-                    <li>Alliance Raids - 24 player raids</li>
-                    <li>Chaotic Alliance Raids - 24 player raids with chaotic mechanics</li>
-                    <li>Ultimates - The toughest of the tough, 8 players, unforgiving mechanics, picture perfect execution needed</li>
-                </ul>
-            <p>It sounds like a lot of content (because it is), however each have their own unique quirks and mechanics associated with them. To help ease the burden, most of the aforementioned content is actually restricted behind progressing through the <abbr title="Main Scenario Quest">MSQ</abbr></p>
+            <div id="content-info">
+                <p>The content guides offer insights on the numerous gameplay aspects implemented into Final Fantasy XIV Online. These are split into their own unique categories set by the game developers. These are (in difficulty order):</p>
+                    <dl id="contents">
+                        <dt class="info"><b>Dungeons</b></dt>
+                            <dd>4 player missions through unique, yet thematic areas</dd>
+                        <dt class="info"><b>Trials</b></dt> 
+                            <dd>8 player challenges of tough bosses</dd>
+                        <dt class="info"><b>Extreme Trials</b></dt>
+                            <dd>8 player challenges of prior trials with more mechanics</dd>
+                        <dt class="info"><b>Unreal Trials</b></dt> 
+                            <dd>8 player challenges of previous extreme trials at the current level capacity</dd>
+                        <dt class="info"><b>Raids</b></dt> 
+                            <dd>8 man challenges, usually outside of the story</dd>
+                        <dt class="info"><b>Savage Raids</b></dt>
+                            <dd>8 man hardmode versions of the raids</dd>
+                        <dt class="info"><b>Allaince Raids</b></dt> 
+                            <dd>24 player raids split into 3 groups of 8 players each</dd>
+                        <dt class="info"><b>Chaotic Alliance Raids</b></dt>
+                            <dd>24 player raids split into 3 groups of 8 players each with chaotic mechanics</dd>
+                        <dt class="info"><b>Ultimates</b></dt>
+                            <dd>The toughest of the tough, 8 players, unforgiving mechanics, picture perfect execution needed</dd>
+                    </dl>
+                <p>
+                    It sounds like a lot of content (because it is), however each have their own unique quirks and mechanics associated with them. 
+                    To help ease the burden, most of the aforementioned content is actually restricted behind progressing through the <abbr title="Main Scenario Quest">MSQ</abbr> and reaching the appropriate <abbr title="Item Level">iLvl</abbr>.
+                    The guides below should give some oversight on what is expected.
+                </p>
+
+                <p>
+                    The colors that you see are designed to give a sense of difficulty scaling.
+                    Green, in most situations, usually refers to an easier time. This, however, is purely subjective as some content may be challenging for others to complete.
+                    Moving down the list, towards Red, the situations get more and more complex.
+                    Harder mechanics, perfect timing, difficulty spikes that the common player is not used to.
+                    These are some of the things one may experience the more you engage in the content.
+                </p>
+
+                <p>
+                    Before I get too ahead of myself, there are some things that need addressing. For starters, before starting any content inside of FFXIV, it is highly recommended to check out the <img src="/Images/the-smiths.png" class="inline-img" alt="The Smith's logo"><b>The Smiths</b>.
+                    These NPCs are situated all around the starting areas, so finding one won't be too challenging. When I first started out, this was never a feature, but recently they have given these NPCs something far more useful to newer players: The Hall of Novice.
+                    This multi-quest chain is to get newer players up to speed with what to do inside of FFXIV, rewarding some pretty neat gear as a result. It teaches you about mechanics and what to expect in fights to come, how to dodge efficiently, manage your skills, and much more.
+                </p>
+
+                <p>
+                    With that out of the way, use the dropdown menu below to explore more into each respective content
+                </p>
+                <label for="content-dropdown">I would like to explore: </label>
+                <select name="content" id="Content">
+                    <option value="null" selected hidden>--SELECT ONE--</option>
+                    <option value="dungeons">Dungeons</option>
+                    <option value="trials">Trials</option>
+                    <option value="extreme">Extreme Trials</option>
+                    <option value="unreal">Unreal Trials</option>
+                    <option value="raids">Raids</option>
+                    <option value="savage">Savage Raids</option>
+                    <option value="alliance">Alliance Raids</option>
+                    <option value="chaotic">Chaotic Alliance Raids</option>
+                    <option value="ultimates">Ultimate Raids</option>
+                </select>
+                    <div id="staging-area">
+                        <section id="dungeons" class="content">
+                            <h2 class="context"> Dungeons</h2>
+                            <p>
+                                Dungeons are your meat and potatoes when it comes to FFXIV. 
+                                You will never stop running dungeons for any reason in particular. 
+                                Everything from currency to materials to even some minor gear upgrades comes from the dungeons. 
+                                I will touch more in the farming guide about the true depths of the dungeons but for now lets go over the basics.
+                            </p>
+
+                            <p>
+                                Every dungeon has a few requirements to enter:
+                            </p>
+                            <ol>
+                                <li>There needs to be 4 players, including yourself present</li>
+                                <li>The party (the group of players) needs to be the following:
+                                    <ul class="party-comp">
+                                        <li><img class="tanks">1 Tank</li>
+                                        <li><img class="healers">1 Healer</li>
+                                        <li><img class="dps">2 DPS</li>
+                                    </ul>
+                                </li>
+                                <li>You need to meet the minimum Item Level for that dungeon</li>
+                                <li>You need to reach the associated quest step to enter the dungeon</li>
+                            </ol><br>
+                            <p>
+                                These requirements are to ensure that you have proper knowledge and skills accessable to make progressing less of a brutal climb and more like a gentle walk.
+                                Now, that is not to say that there isn't going to be times where you feel like you have hit a wall when it comes to quickly progressing through the dungeons (cough)<s>Mount Gulg</s>(cough).
+                            </p>
+                            <h3>Dungeon Layout</h3>
+                            <p>
+                                Each dungeon follows, relatively, the same pattern; whether it is main story related or side content:
+                                <ul id="dungeon-layout">
+                                    <li class="layout">Numerous Fights - These are referred to as groups, where one enemy will pull the rest of the enemies in an area<br></li>
+                                    <li class="layout"><b>The Wall</b> - This is a common term to refer to an area that will not unlock until all enemies are defeated<br></li>
+                                    <li class="layout">Numerous Fights<br></li>
+                                    <li class="layout"><b>Mini-Boss 1</b> - This is your first boss of the dungeon, often boasting some mechanics to follow through with.<br></li>
+                                    <li class="layout">Numerous Fights<br></li>
+                                    <li class="layout"><b>The Wall</b><br></li>
+                                    <li class="layout">Numerous Fights<br></li>
+                                    <li class="layout"><b>Mini-Boss 2</b> - This is your second boss of the dungeon, often boasting mechanics that will put you to the test.<br></li>
+                                    <li class="layout">Numerous Fights<br></li>
+                                    <li class="layout"><b>The Wall</b><br></li>
+                                    <li class="layout">Numerous Fights<br></li>
+                                    <li class="layout"><b>Final Boss</b> - The final boss of the dungeon. Has the most mechanics and requires you to be on your toes<br></li>
+                                </ul>
+                                The layout is universally the same, which can get repetative and boring at times, but the silver lining here is that the simplistic gameplay loop makes way for the breath-taking scenery.
+                            </p>
+                            <h3>Terminology to Expect</h3>
+                            <p>
+                                In the dungeons, we have a language that is best used to describe certain actions and expectations. 
+                                Unofficially (meaning by the developers) recognized as the standard language for party content, the terminology one might expect should be properly identified.
+                                <dl id="terminology">
+                                    <dt>Wall-2-Wall (W2W)</dt>
+                                    <dd>Pulling enemies to the next wall, as outlined in the 'Dungeon Layout' section of this guide</dd>
+                                    <dt>Invuln</dt>
+                                    <dd>A Tank ability that prevents them from dying to any forms of damage, excluding some cases, for ~10 seconds. Has a multi-minute cooldown before reuse.</dd>
+                                    <dt>Mit (Short for Mitigation)</dt>
+                                    <dd>
+                                        The usage of abilities that will reduce incoming damage for a short time. Tanks can self mit using their damage reduction skills or party mit using Reprisal.
+                                        DPS classes have either Addle or Feint if they are Magical DPS or Physical DPS. Healers can also mit, but their mits are in the form of heals.
+                                    </dd>
+                                    <dt>Positionals</dt>
+                                    <dd>
+                                        Positionals refer to the DPS exclusively. These are spots on the enemy that can boost the damage of certain skills the DPS have access to.
+                                        There are 2 positionals:
+                                        <ul>
+                                            <li>Flank (Left and Right Sides)</li>
+                                            <li>Rear (Behind)</li>
+                                        </ul>
+                                    </dd>
+                                    <dt>Tank Buster (TB)</dt>
+                                    <dd>A heavy hitting attack usually on the highest in aggro. That is not always the case as some fights use different mechanics</dd>
+                                    <dt>Cleave</dt>
+                                    <dd>Refers to an attack that has a wide angle of attack, usually designated as a 'Tank Buster', that a boss may cast or attack with.</dd>
+                                    <dt>Face Away / Look Away</dt>
+                                    <dd>
+                                        A term that isn't talked about much, but tanks need to follow the rule of thumb here. Tanks should face the boss away from the party if capable of doing so.
+                                        This allows the DPS classes to maximize their damage without being at risk to taking unnecessary hits. Tanks should also be aware that most bosses cleave, so aiming that cleave away means a happy and healthy party.
+                                    </dd>
+                                </dl>
+                                Any other terms that I have not talked about is learned through experiencing first.
+                            </p>
+                        </section>
+
+                        <section id="trials" class="content">
+                            <h2 class="context"> Trials</h2>
+                            <p>
+                                Trials are where the game shifts its focus from being about dungeon crawling to the story aspect behind the scenes. 
+                                Most, if not all, trials are story related content, often depicting an epic battle between one of the main antagonists of that particular expansion. 
+                                The catch? Instead of taking on the fight in a 4 person party, with some exceptions, the fight is shifted to an 8 player fight, often boasting some more challenging mechanics.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                When it comes to trials, theres a few things one is to expect. First of which is the party composition which becomes the bog standard for most 8 player content.
+                                In traditional parties, you will expect to see:
+                            </p>
+                            <ul class="party-comp">
+                                <li><img class="tanks">2 Tanks</li>
+                                <li><img class="healers">2 Healers</li>
+                                <ul>
+                                    <b>[Click on the healers for more information]</b>
+                                    <li> <a href=class-job-guide.html#regen-healer id="regen">Regen Healer</a></li>
+                                    <li> <a href=class-job-guide.html#barrier-healer id="barrier">Barrier Healer</a></li>
+                                </ul>
+                                <li><img class="dps">4 DPS:</li>
+                                <ul class="dps-comp">
+                                    <li><img class="melee-dps">2 Melee DPS</li>
+                                    <li><img class="magRange-dps">1 Magic Ranged DPS</li>
+                                    <li><img class="physRange-dps">1 Physical Ranged DPS</li>
+                                </ul>
+                            </ul>
+                            <p>
+                                In this team composition, it fills all the roles that are expected.
+                                This, however, is not always the case as queueing for content means you take whatever you get.
+                                You will mostly find this team composition when partying up for higher content like savage raids, unreal trials, and ultimates.
+                                Reason for this is to fill every requirement for getting a 5% stat bonus for each unique role in the party.
+                            </p>
+                            <h3>How tough are trials?</h3>
+                            <h4>Short Answer: Not at all</h4>
+                            <p>
+                                Since trials are deemed as "story content" they are not anticipated to be hard in any capacity. 
+                                Once you see the mechanics for the first time, it becomes easier to dodge it.
+                                With the exception of more recent content, most experienced players automatically know the attacks and dodge it accordingly.
+                                Even with some recent content, its not uncommon for players to attribute the attacks with other known attacks.
+                            </p>
+                            <p>
+                                If you are struggling with dodging mechanics, the number one recommendation I have is to ask your party for help.
+                                It is astonishing that so many players do not ask for guidance for when it comes to understanding mechanics.
+                                I can assure you, very few will chastize you on asking for further clarification; most will actually give some guidance.
+                                FFXIV at its core is a community driven MMO JRPG, so seeking help from others is encouraged.
+                            </p>
+                        </section>
+
+                        <section id="extreme" class="content">
+                            <h2 class="context"> Extreme Trials</h2>
+                            <p>
+                                Here is where the content spikes in difficulty compared to the story aspect of it.
+                                Extreme trials are the same as trials but cranking the dial up a few notches.
+                                Whereas before attacks would be telegraphed, or shown before happening, theres a decent likelyhood that they are not.
+                                Another big difference is where Trials normally go until the party dies, Extreme trials go until the boss runs out of their set moves, ending with an attack known as an Enrage.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                For starters, expect to die a lot. 
+                                Extreme Trials are notorious for being some of the most visually stimulating, yet chaotic in intensity.
+                                Mechanics come in the form of looking at what the boss is doing and adapting based on visual indication as opposed to looking for a discolored spot on the ground.
+                                Sometimes, there is no visual indication and its up to trial and error to see it through to the end.
+                            </p>
+                            <p>
+                                Another thing to expect is to finally start utilizing food buffs and potions.
+                                These provide a substantial boost in your combat abilities and survivability.
+                                In more recent content, these are neccesities as you simply will not have enough damage to complete the fight.
+                                You can expect to hear something like "potion window" or "pot window". These refer to the specific timings of using a potion to boost damage for a short amount of time.
+                                I will go over more about consumables in the class job guides as they are important for each individual class.
+                            </p>
+                            <h3>How can I improve?</h3>
+                            <p>
+                                Improving during high end content, such as extreme trials, is difficult because it varies based on person to person.
+                                One such way that I can recommend is utilizing external tools and resources to supplement your experience.
+                                Visual guides, such as those put out by <a href="https://www.youtube.com/@HectorHectorson" target="_blank">Hector Hectorson</a> or <a href="https://www.youtube.com/@Mrhappy1227" target="_blank">MrHappy1227</a>, often boast day one party finder strategies for high end content, which includes extreme trials.
+                                One guide I highly recommend, if you are open to crude humor, is the <i>Quick guide for braindead ppl like me</i> by <a href="www.youtube.com/@SanneaRuiter" target="_blank">Sannea Ruiter</a>.
+                                She has a simplistic way of explaining mechanics in a short amount of time, however she mostly posts those braindead guides about Unreal content and Ultimates.
+                            </p>
+                            <p>
+                                Another aspect of improving is to simply experiment with your abilities and finding what works best for you.
+                                You, alone, are the best judge at what you need to do in certain situations.
+                                Extreme Trials make this process easier as they are not an endurance battle but more so a movie being played out.
+                                You have the ability to make the call on what attacks to use, what abilities to save, and many other choices.
+                            </p>
+                        </section>
+
+                        <section id="unreal" class="content">
+                            <h2 class="context"> Unreal Trials</h2>
+                            <p>
+                                Unreal Trials are what happens when you take Extreme trials and scale them to the current level cap.
+                                The major caveat with Unreal trials is that they are on a rotation. 
+                                More specifically, they are what is classified as optional content.
+                                Since it is optional, the requirements to unlock the content is barred behind a quest.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                In essence, all that changes is some minor tweaks to pre-existing extreme content.
+                                Most of them can be discovered based on an action/reaction system by your party.
+                                Essentially, party does something and the boss does something in return. 
+                                There's not much to talk about when it comes to Unreal trials since the rewards are mostly cosmetics.
+                                I will go over the rewards in more depth during the farming guide.
+                            </p>
+                        </section>
+
+                        <section id="raids" class="content">
+                            <h2 class="context"> Raids</h2>
+                            <p>
+                                Here is the big kahuna of the FFXIV community in terms of most played content.
+                                Raids are the crux of most end-game content, often boasting some insane requirements, strategies, and interesting stories.
+                                If you thought that extreme trials were difficult, then raids are in another league (and rightfully so).
+                                Raids, both normal and savage, are just under Ultimates, and the newly released Chaotic Alliance Raids, in terms of difficulty.
+                            </p>
+                            <p>
+                                Raids are split into tiers, each with 3 "trials" before reaching the main boss of the tier.
+                                They are heavily tied to their individual story, kinda-sorta separate from the main story.
+                                I say this because the raids are released in the patches and not the main story quests, with the exception of the first tier which is released in conjunction with the expansion.
+                                Their harder successor, the Savage Raids, are released later on as to give players time to experience the raids.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                Respectfully, what is not there to expect?
+                                Raids are the culmination of everything you have learned throughout your journey, all at once.
+                                As they are storylines in and of themselves, they are thematic to the tier of raid they are encompassed in.
+                                Expect to see some crazy moves and awesome transitions.
+                            </p>
+                            <h3>Am I required to do these raids?</h3>
+                            <p>
+                                A majority of the playerbase would say yes, but I am of a different opinion.
+                                See, there's a ton to do in FFXIV, most of which are not required to do raiding of any form.
+                                If you are looking to achieve big numbers when you perform attacks, then I would say to go for raids.
+                                This, however, is not an invitation to start joining hardcore raid groups and expect to succeed.
+                                Take raiding at your own pace, stop when you feel the need to stop. There is nobody forcing your hand through this.
+                            </p>
+                        </section>
+
+                        <section id="savage" class="content">
+                            <h2 class="context"> Savage Raids</h2>
+                            <p>
+                                Ho boy... Savage raids are some of the most challenging and mechanic heavy content barring Ultimate Raids.
+                                A savage raid is unlocked after completing the normal tier of raids.
+                                Most cases, you will find an NPC in the area of the raids that will unlock the content for you.
+                                After that, you will have all savage raids unlocked... kinda.
+                            </p>
+                            <p>
+                                Square Enix, the developers of Final Fantasy, understand that jumping fully into savage is not optimal.
+                                As such, they lock the tiers of Savage in a series of checks.
+                                Most notibly of these checks is that it <b>checks to see if you completed the prior savage before moving onto the next</b>.
+                                These raids are some of the most difficult, and as such, they require you to prove that you can complete these challenges.
+                            </p>
+                            <h3>What to ex-</h3>
+                            <h2 class="exclude"> A LOT </h2>
+                            <p>
+                                There is a lot of mechanics that needs to be understood, tested, and performed with upmost efficiency.
+                            </p>
+                            <dl>
+                                <dt>Gone down in an inopportune moment?</dt>
+                                <dd>That is a reset.</dd>
+                                <dt>Got hit by an attack that you should not have?</dt>
+                                <dd>Occasionally a reset.</dd>
+                                <dt>Got someone killed by mistake?</dt>
+                                <dd>Reset.</dd>
+                                <dt>Was not where you needed to stand for a mechanic?</dt>
+                                <dd>Better hope your party adjusted for your mistake; otherwise <b>RESET</b>.</dd>
+                            </dl>
+                            <p>
+                                There is no room for error, no safety net to protect you here.
+                                If you make a mistake, its either everyone's mistake, or your burden to bear.
+                                Savage raids do not play games anymore; all the training wheels are off.
+                            </p>
+                            <h3>How can I improve?</h3>
+                            <p>
+                                There is no information I can provide to help one improve.
+                                That is not because I have nothing, but simply the situations are so... situational.
+                                When I played as a healer for a savage raid tier, I was not expected to simply do what I needed to do.
+                                I had to pay attention to everyone else and protect them when they made mistakes.
+                                Its a collective group effort to make sure everyone's on the same page.
+                            </p>
+                            <p>
+                                That said, I will give what helped me during my Savage raid experience:
+                            </p>
+                            <h4>Try to memorize patterns</h4>
+                            <p>
+                                Since the bosses in savage raids follow the same rules as extreme trial bosses do, try to find patterns.
+                                If a boss does something that requires you to stand hyper specifically, find the places to stand and look for an identifier.
+                                These bosses show their attacks visually, so finding a visual indicator could help a lot.
+                                For example: one of the most recent savage bosses, Sugar Riot, has an attack that spawns a quicksand that you need to place bombs into to avoid taking damage.
+                                As a regen healer, I had deduced that no matter what, I need to stand on 3 markers that is standard for all parties.
+                                Whether I stand in the sand or out of it depends on the visual indication of the boss, but I always know where generally to stand.
+                            </p>
+                        </section>
+
+                        <section id="alliance" class="content">
+                            <h2 class="context"> Alliance Raids</h2>
+                            <p>
+                                Well, everyone has an achiles heel when it comes to stuff they have to do.
+                                Alliance raids are <b>24</b> player content that is usually side content, often having its own story.
+                                Why is it so high on the difficulty list when there's 24 players?
+                                That's because its 23 extra people to pay attention to.
+                                Good luck to your eyes if you have battle effects set to 'everyone'.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                Pain.<br>
+                                Expect to feel pain.<br><br>
+                            </p>
+                            <p>
+                                In all seriousness, the party composition is different as there are 3 groups:
+                            </p>
+                            <ul class="party-comp">
+                                Individual Groups:
+                                <li><img class="tanks">1 Tank</li>
+                                <li><img class="healers">2 Healers</li>
+                                <li><img class="dps">5 DPS</li>
+                            </ul>
+                            <ul class="party-comp">
+                                Full Alliance:
+                                <li><img class="tanks">3 Tanks</li>
+                                <li><img class="healers">6 Healers</li>
+                                <li><img class="dps">15 DPS</li>
+                            </ul>
+                            <p>
+                                As you can see, a lot more people to pay attention to.
+                                If that was not enough, there are mechanics associated with the bosses that will depend on all parties to resolve.
+                                If one party does not do what they need to do, expect a long and grueling session.
+                            </p>
+                            <h3>Are they worth doing?</h3>
+                            <p>
+                                They are classified as optional content, except for the Crystal Tower Alliance Raids.
+                                They are their own side stories that have no relevance to the main story.
+                                As of current, they are completely up to your discression, but they do have cosmetic mounts and some have cool armor to obtain.
+                                That is, if you are willing to put up with others.
+                            </p>
+                        </section>
+
+                        <section id="chaotic" class="content">
+                            <h2 class="context"> Chaotic Alliance Raids</h2>
+                            <p>
+                                Just like how raids have a savage mode, so too does Alliance raids.
+                                This was recently added within Dawntrail, offering a look back at the Crystal Tower series of Alliance Raids.
+                                However, instead of 3 alliance raids to slog through with 24 people, there's only one boss.
+                                Treat this similarly as a Savage raid but with more people.
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                In all honesty, I have not done any Chaotic Alliance raids at the time of writing this.
+                                I cannot provide good enough guidance that would make someone consider their options.
+                                All I can say is: If you understand savage raids and their complexity, try doing the same with 24 people coordinating at once.
+                            </p>
+                        </section>
+
+                        <section id="ultimates" class="content" hidden>
+                            <h2 class="context"> Ultimate Raids</h2>
+                            <p>
+                                The apex of content within FFXIV.
+                                These sets of raids are what is considered "What-ifs" in certain chapters of your journey.
+                                Set in alternate scenarios of what would have happened if X was changed.
+                                I won't go into each storyline and what was changed but know something, these fights are ultimates for a reason. 
+                            </p>
+                            <h3>What to expect?</h3>
+                            <p>
+                                Expect to die a lot.
+                                There is no joke that these are ultimates for a reason.
+                                They are the ultimate challenge to surpass, having no more hand holding.
+                                If you mess up something, everyone suffers because of it.
+                                You <b>NEED</b> to be on your A-game.
+                            </p>
+                            <p>
+                                The main challenge when it comes to ultimates is that there are <b>ZERO</b> checkpoints.
+                                It is a gauntlet of fight after fight and you need to throw your weight through the whole thing.
+                                If you mess up at the end, its right back to the beginning.
+                                The only exception to this is <i>Dragonsong's Reprise</i> (DSR), a level 90 Ultimate raid introduced during Endwalker.
+                                The reason for this is because of how the fight is oriented.
+                                Every Ultimate usually has about 4-5 phases before you complete the fight.
+                                DSR has 7... Yeah... 7 Phases of fights. 
+                                On top of that, DSR has 2 paths to take and only one path leads to a victory.
+                                If there was no checkpoint, players would have rioted in the forums at that, so I appreciate the silver lining when I see it.
+                            </p>
+                            <h3>Are they worth doing?</h3>
+                            <p>
+                                The only benefit of doing an Ultimate Raid is a badge and a glowing, animated weapon for your class.
+                                In my opinion, they are best left for when you have completed everything else there is to do.
+                                That being said, the requirements for unlocking these sets of raids is that you need to complete the savage raid tier of the patch they were released in.
+                                They are usually the 4th and 8th savage of that particular set of raids.
+                                If you are not big on doing Savage raids, then I say stay far away from Ultimate Raids.
+                            </p>
+                        </section>
+                    </div>
+                    
+                </div>
             </div>
-            <p></p>
+         
         </main>
 
         <div id="footer"></div>
-        
+    
         <!-- Linking script to individual js file -->
         <script src="/Scripts/loadHTML.js"></script>
         <script src="/Scripts/title-shifting-hero.js"></script>
+        <script src="/Scripts/contentLoad.js"></script>
+        <!-- Preset the Content Switcher -->
+        <script>
+            __initContentSwitcher({
+                loc: '#content-info',
+                select: '#Content',
+                content: '.content',
+                default: 'null'
+            });
+        </script>
 
     </body>

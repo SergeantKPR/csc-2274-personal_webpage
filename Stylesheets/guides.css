@@ -153,7 +153,13 @@ h1, h2, h3
 #page-content *:not(.hero)
 {
     padding: 0 1%;
-    overflow: hidden;
+}
+
+.inline-img
+{
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
 }
 
 header, footer
@@ -177,3 +183,85 @@ header, footer
 }
 
 #page-content {padding-bottom: 60px; /* Padding footer to avoid clipping */}
+
+/* CONTENT GUIDE STYLING */
+dt.info
+{
+    padding: 0.5rem, 1em;
+    color: hsl(120, 100%, 50%); /* Default the color to green */
+    border-radius: 5px;
+    text-shadow: 2.5px 1px rgba(0,0,0, 1) /* Noticeable shadow to allow color to not burn the retinas*/
+}
+
+/* Color Gradient for info */
+.info:nth-of-type(1) {color: hsl(120, 100%, 50%);}
+.info:nth-of-type(2) {color: hsl(105, 100%, 50%);}
+.info:nth-of-type(3) {color: hsl(90, 100%, 50%);}
+.info:nth-of-type(4) {color: hsl(75, 100%, 50%);}
+.info:nth-of-type(5) {color: hsl(60, 100%, 50%);}
+.info:nth-of-type(6) {color: hsl(45, 100%, 50%);}
+.info:nth-of-type(7) {color: hsl(30, 100%, 50%);}
+.info:nth-of-type(8) {color: hsl(15, 100%, 50%);}
+.info:nth-of-type(9) {color: hsl(5, 100%, 50%);}
+
+/* Color Gradient for Each Section header of Content Guide to match info's gradient */
+
+#staging-area section:nth-of-type(1):not(.exclude) h2.context {color: hsl(120, 100%, 50%);}
+#staging-area section:nth-of-type(2):not(.exclude) h2.context {color: hsl(105, 100%, 50%);}
+#staging-area section:nth-of-type(3):not(.exclude) h2.context {color: hsl(90, 100%, 50%);}
+#staging-area section:nth-of-type(4):not(.exclude) h2.context {color: hsl(75, 100%, 50%);}
+#staging-area section:nth-of-type(5):not(.exclude) h2.context {color: hsl(60, 100%, 50%);}
+#staging-area section:nth-of-type(6):not(.exclude) h2.context {color: hsl(45, 100%, 50%);}
+#staging-area section:nth-of-type(7):not(.exclude) h2.context {color: hsl(30, 100%, 50%);}
+#staging-area section:nth-of-type(8):not(.exclude) h2.context {color: hsl(15, 100%, 50%);}
+#staging-area section:nth-of-type(9):not(.exclude) h2.context {color: hsl(5, 100%, 50%);}
+
+#staging-area section h2:not(.exclude)
+{
+    border-radius: 5px;
+    text-shadow: 2.5px 1px rgba(0,0,0, 1)
+}
+
+#staging-area > .content
+{
+    display: none;
+}
+
+#staging-area > .content.active
+{
+    display: block;
+}
+
+ol, ul > li
+{
+    margin-left: 20px
+}
+
+.party-comp .dps-comp > li
+{
+    margin-left: 20px;
+}
+
+/* IMG SRC CONTROL */
+img
+{
+    height: 1em;
+    width: auto;
+}
+.tanks{ content: url("/Images/tanks.png");}
+.healers{ content: url("/Images/healer.png");}
+.dps{ content: url("/Images/dps.png");}
+.melee-dps {content: url("/Images/meleeDPS.png");}
+.magRange-dps {content: url("/Images/magicalDPS.png");}
+.physRange-dps {content: url("/Images/physicalDPS.png");}
+
+ol, ul 
+{
+    margin-left: 2em;
+    overflow: visible;
+    list-style-position: outside;
+}
+
+li::marker {list-style-position: inside;}
+
+
