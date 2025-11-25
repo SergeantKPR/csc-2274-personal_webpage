@@ -57,115 +57,88 @@
     max-width: 100%;
 }
 
-/* Topbar container */
-.topbar-div 
+/* ============================
+   GENERAL RESPONSIVENESS
+   ============================ */
+/* Make ALL images scale by default */
+img 
 {
-    position: absolute;
-    bottom: 7%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: inherit;
-    z-index: 5;
-
-    overflow: visible;
+    height: auto;
+    max-width: 100%;
 }
 
-/* Navigation list styling */
-.nav 
+/* Make text scale relative to viewport */
+html 
 {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow: hidden;
-    gap: clamp(0.25rem, 1vw, 1rem);
-    margin: 0;
-    padding: 0;
+    font-size: 16px; /* default */
 }
 
-.nav a 
+@media (max-width: 1200px) 
 {
-    color: #000000;
-    text-decoration: none;
-    font-family: "Segoe UI", Arial, sans-serif;
-    text-align: center;
-    font-size: clamp(0.8rem, 1vw + 0.5rem, 1.25rem);
-    padding: clamp(0.5rem, 0.5vw, 0.8rem) clamp(0.5rem, 1vw, 1rem);
-    border-radius: 6px;
-    transition: background 0.3s, color 0.3s;
+    html { font-size: 15px; }
 }
 
-.nav a:hover, .dropdown:hover .dropBtn
+@media (max-width: 900px) 
 {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    cursor: pointer;
+    html { font-size: 14px; }
 }
 
-/* Active tab styling */
-.nav a.active 
+@media (max-width: 600px) 
 {
-    background: #a28655c6;
-    color: #0c84bb;
-    font-weight: bold;
+    html { font-size: 13px; }
 }
 
-.dropdown 
+@media (max-width: 400px) 
 {
-  float: left;
-  overflow: hidden;
-  font-family: "Segoe UI", Arial, sans-serif;
+    html { font-size: 12px; }
 }
 
-/* Dropdown button */
-.dropdown .dropBtn 
+/* ------------------------------------
+      RESPONSIVE HEADER STYLE
+------------------------------------ */
+
+@media (max-width: 1200px) 
 {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+    #header-container 
+    {
+        padding: 0 1rem;
+    }
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content 
+@media (max-width: 900px) 
 {
-  display: none;
-  position: absolute;
-  overflow-y: inherit;
-  left: 10%;
-  right: 0;
-  justify-content: center;
-  min-width: 160px;
-  z-index: 1;
+    .scene 
+    {
+        padding-bottom: 1.5rem;
+    }
+
+    .scene img 
+    {
+        width: 100%;
+        height: auto;
+    }
 }
 
-/* Links inside the dropdown */
-.dropdown-content a 
+@media (max-width: 600px) 
 {
-    float: none;
-    color: #000000;
-    text-decoration: none;
-    font-family: "Segoe UI", Arial, sans-serif;
-    text-align: center;
-    font-size: clamp(0.8rem, 1vw + 0.5rem, 1.25rem);
-    padding: clamp(0.5rem, 0.5vw, 0.8rem) clamp(0.5rem, 1vw, 1rem);
-    border-radius: 6px;
-    transition: background 0.3s, color 0.3s;
+    #header-container 
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .overlay 
+    {
+        width: 100%;
+        left: 0;
+    }
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover 
+@media (max-width: 400px) 
 {
-  background-color: #ddd;
+    .scene 
+    {
+        padding-bottom: 1rem;
+    }
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content 
-{
-  display: block;
-}

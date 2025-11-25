@@ -1,0 +1,245 @@
+/*===============================
+  HAMBURGER MENU CONTAINER
+  ==============================*/
+body.mobile .nav 
+{
+    display: none;
+}
+
+.force-mobile .nav 
+{
+    display: none !important;
+}
+.force-mobile #hamburger 
+{
+    display: block !important;
+}
+
+.force-desktop #hamburger 
+{
+    display: none !important;
+}
+
+
+/* ============================
+   STICKY TOPBAR CONTAINER
+   ============================ */
+#topbar 
+{
+    position: absolute;
+    top: 100%; /* sits BELOW header */
+    left: 0;
+    width: 100%;
+    height: 55px;
+    z-index: 9999;
+    background-color: var(--topbar-color);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* ============================
+   NAVIGATION WRAPPER
+   Allows hiding on mobile
+   ============================ */
+.nav-wrapper 
+{
+    display: flex;
+    align-items: center;
+}
+
+/* ============================
+   NAV LIST
+   (Preserved your styles)
+   ============================ */
+.nav 
+{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.25rem, 1vw, 1rem);
+    margin: 0;
+    padding: 0;
+}
+
+/* Links */
+.nav a 
+{
+    color: #000000;
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    text-align: center;
+    font-size: clamp(0.8rem, 1vw + 0.5rem, 1.25rem);
+    padding: clamp(0.5rem, 0.5vw, 0.8rem) clamp(0.5rem, 1vw, 1rem);
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav a:hover,
+.dropdown:hover .dropBtn 
+{
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Active page link */
+.nav a.active 
+{
+    background: #a28655c6;
+    color: #0c84bb;
+    font-weight: bold;
+}
+
+/* ============================
+   DROPDOWN MENU
+   ============================ */
+.dropdown 
+{
+    position: relative; /* allows absolute dropdown */
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Dropdown button */
+.dropBtn 
+{
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    padding: clamp(0.5rem, 0.5vw, 0.8rem) clamp(0.5rem, 1vw, 1rem);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Dropdown container */
+.dropdown-content 
+{
+    display: none;
+    position: absolute;
+    top: 100%; /* positions it below button */
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 99999;
+}
+
+/* Dropdown links */
+.dropdown-content a 
+{
+    display: block;
+    padding: 10px 16px;
+    text-align: left;
+    color: #000000;
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    border-radius: 0;
+    transition: background 0.3s;
+}
+
+/* Hover behavior */
+.dropdown-content a:hover 
+{
+    background-color: #ddd;
+}
+
+/* Show menu on hover */
+.dropdown:hover .dropdown-content 
+{
+    display: block;
+}
+
+/* ============================
+   HAMBURGER BUTTON
+   ============================ */
+#hamburger 
+{
+    display: none; /* shown only on mobile */
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#hamburger span 
+{
+    width: 25px;
+    height: 3px;
+    background-color: white; /* matches your theme */
+}
+
+
+
+/* ============================
+   MOBILE RESPONSIVE
+   ============================ */
+@media (max-width: 900px) 
+{
+
+    /* hide nav by default */
+    .nav-wrapper 
+    {
+        position: absolute;
+        top: 55px;  /* directly below sticky topbar */
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--topbar-color);
+        padding: 15px 0;
+        backdrop-filter: blur(6px);
+    }
+
+    /* show when hamburger toggled */
+    .nav-wrapper.active 
+    {
+        display: flex;
+    }
+
+    /* show hamburger */
+    #hamburger 
+    {
+        display: flex;
+    }
+
+    /* convert nav to vertical list */
+    .nav 
+    {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 0;
+    }
+
+    .nav a,
+    .dropBtn 
+    {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* dropdown becomes inline under button */
+    .dropdown-content 
+    {
+        position: relative;
+        top: 0;
+        left: 0;
+        box-shadow: none;
+        background: none;
+        min-width: 100%;
+    }
+
+    .dropdown-content a 
+    {
+        padding: 10px 0;
+        background: rgba(255,255,255,0.1);
+        margin: 2px 0;
+    }
+}

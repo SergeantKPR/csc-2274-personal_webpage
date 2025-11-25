@@ -74,3 +74,26 @@ loadHTML("header", "header.html", () =>
             document.body.appendChild(script);
         });
 loadHTML("footer", "footer.html");
+loadHTML("topbar", "topbar.html", () => 
+        {
+            const script = document.createElement("script");
+            script.src = "/Scripts/headerFunctions.js";
+            script.onload = () => 
+            {
+                initHeader();
+                updateTopbar();
+                window.addEventListener("scroll", updateTopbar);
+                window.addEventListener("resize", updateTopbar);
+
+                // Scroll to hash after the header is injected <-- rectifies issues with not seeing content on load
+                if (window.location.hash) 
+                {
+                    setTimeout(() => 
+                    {
+                        const target = document.querySelector(window.location.hash);
+                        if (target) target.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                }
+            };
+            document.body.appendChild(script);
+        });
