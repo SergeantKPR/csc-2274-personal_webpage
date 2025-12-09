@@ -16,6 +16,8 @@
 
         <!-- Stylesheet for page -->
         <link rel="Stylesheet" href="../Stylesheets/guides.css">
+        <script src="/Scripts/alpineFunctions.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     </head>
 
     <body class="encyclopedia-test">
@@ -28,9 +30,510 @@
             </section>
             <p>Combat jobs are the bread and butter of Final Fantasy XIV Online. These particular sets of classes influence how you play the game and cooperate with other players. These are the classes you start playing as and can pick up new classes as you progress on with the story.
                 Some classes are locked behind certain requirements or expansions (more on that in their own individual sections) so be aware that not everything will be available to you at once. Thankfully, there's a plethora of classes to choose from without needing to get any expansions or progress that far in the story.
-                Do note that choosing a starting class will put you in <strong>one</strong> of <strong>three</strong> starting locations and you will not be able to pick up classes from another location until you progress in the main story.
+                Do note that choosing a starting class will put you in <strong>one</strong> of <strong>three</strong> starting locations and you will not be able to pick up classes from another location until you progress in the main story.<br><br><br>
+                <i>Quick addendum before you continue, each class has something called a Job Gauge. This gauge is a visual indicator for when you can use certain abilities or skills at the cost of a currency that will be visible on the gauge. When prompted, I suggest you read what your gauge does as each class is different.</i>
             </p>
-            <p></p>
+
+            <div class="tab-container" x-data="classSelection()" x-init="console.log('Alpine.js initialized for class selection')">
+
+                <!-- TANKS -->
+                <div class="tab-button"
+                    x-data="{ hover: false }"
+                    :class="{'active': checkIsActive('tank')}"
+                    @click="tankSelect()">
+                    <div class="tab-combat-content"
+                        @mouseenter="hover = true"
+                        @mouseleave="hover = false">
+
+                        <img src="/Images/tanks.png" alt="Tanks" />
+                        <span
+                            class="hover-text"
+                            :class="{'show': hover}"
+                        >
+                            Tanks
+                        </span>
+                    </div>
+                </div>
+
+                <!-- HEALERS -->
+                <div class="tab-button"
+                    x-data="{ hover: false }"
+                    :class="{'active': checkIsActive('healer')}"
+                    @click="healerSubSelect()">
+                    <div class="tab-combat-content"
+                        @mouseenter="hover = true"
+                        @mouseleave="hover = false">
+                        <img src="/Images/healer.png" alt="Healers" />
+                        <span
+                            class="hover-text"
+                            :class="{'show': hover}"
+                        >
+                            Healers
+                        </span>
+                    </div>
+                </div>
+
+                <!-- MELEE DPS -->
+                <div class="tab-button"
+                    x-data="{ hover: false }"
+                    :class="{'active': checkIsActive('melee-dps')}"
+                    @click="meleeDpsSelect()">
+
+                    <div class="tab-combat-content"
+                    @mouseenter="hover = true"
+                    @mouseleave="hover = false">
+                        <img src="/Images/meleeDPS.png" alt="Melee DPS"/>
+                        <span
+                            class="hover-text"
+                            :class="{'show': hover}"
+                        >
+                            Melee DPS
+                        </span>
+                    </div>
+                </div>
+
+                <!-- PHYSICAL RANGED DPS -->
+                <div class="tab-button"
+                    x-data="{ hover: false }"
+                    :class="{'active': checkIsActive('phys-range-dps')}"
+                    @click="physRangeDpsSelect()">
+                    <div class="tab-combat-content"
+                    @mouseenter="hover = true"
+                    @mouseleave="hover = false">
+                        <img src="/Images/physicalDPS.png" alt="Physical Ranged DPS"/>
+                        <span
+                            class="hover-text"
+                            :class="{'show': hover}"
+                        >
+                            Phys Ranged
+                        </span>
+                    </div>
+                </div>
+
+                <!-- MAGICAL RANGED DPS -->
+                <div class="tab-button"
+                    x-data="{ hover: false }"
+                    :class="{'active': checkIsActive('mag-range-dps')}"
+                    @click="magRangeDpsSelect">
+                    <div class="tab-combat-content"
+                    @mouseenter="hover = true"
+                    @mouseleave="hover = false">
+                        <img src="/Images/magicalDPS.png" alt="Magical Ranged DPS" />
+                        <span
+                            class="hover-text"
+                            :class="{'show': hover}"
+                        >
+                            Magic Ranged
+                        </span>
+                    </div>
+                </div>
+            
+                <div x-show="selectedTab === 'tank'">
+                    <h2>Tanks</h2>
+                    <p>
+                        Tanks are the heavy bullet-sponges in the battles. Their job is to ensure that you do not die to a random attack or get punished for trying to kill an enemy.
+                        They have some of the best survivability* and mitigations of any class, but trade it off for slightly lower damage as compared to something like the Melee DPS.
+                        If you are just starting out, you have access to two possible tank classes, with another two being unlocked further in the main storyline during future expansions.<br>
+                        Cycle through the tabs to learn about each class and what they do.
+
+                        <div x-data="tabContent()" class="tabs-wrapper">
+                            <div class="class-tabs">
+                                <button :class="{ 'active': tab==='General'}" @click="changeTab('General')">General Knowledge</button>
+                                <button :class="{ 'active': tab==='Paladin'}" @click="changeTab('Paladin')">Paladin</button>
+                                <button :class="{ 'active': tab==='Warrior'}" @click="changeTab('Warrior')">Warrior</button>
+                                <button :class="{ 'active': tab==='Dark_Knight'}" @click="changeTab('Dark_Knight')">Dark Knight</button>
+                                <button :class="{ 'active': tab==='GunBreaker'}" @click="changeTab('GunBreaker')">Gunbreaker</button>
+                            </div>
+
+                            <div class="class-tab" x-ref="scrollArea">
+                                <div x-show="tab === 'General'" x-transition>
+                                    <h2>General Knowledge</h2>
+                                    <p>
+                                        Tanks, in general, seem to be this unkillable force. A wall of tungsten if you will. Tanks, in reality, are not as invulnerable as you think they are.
+                                        This brief section covers what to expect in all tanks, whereas the other tabs cover what to anticipate for the individual playstyles of each specific tank.<br><br>
+                                        Tanks all have the following:
+                                        <ol>
+                                            <li>Mitigation buttons: These buttons serve as the lifeblood for your tanks. They can be self, party, or targetted buffs/debuffs that will assist you in surviving the ass beating whatever you're facing will dish out.</li>
+                                            <li>Invulnerability Skill (Invuln): This is the "Oh S*&!" button that usually means whatever is about to kill you is due to one of two causes. Either a healer was not doing their job, or you are about to be hit with something that was meant for more people.</li>
+                                            <li>"1-2-3" Combo: Every tank has a set of 3 buttons that all chain into one another, dealing more damage if you successfully hit the chain properly.</li>
+                                            <li>Self Regeneration: Every tank has some form of a way to heal yourself in a pinch. It could be a regeneration effect or a flat out heal.</li>
+                                            <li>Provoke (Voke) and Shirk (Shirk-cast): These two skills allow you to control the Aggro (who the enemy is attacking) effectively. Provoke pulls aggro from someone, making you the most dangerous. Shirk will give your aggro to someone else.</li>
+                                            <li>Interject: A Skill that allows you to stop the cast of an enemy <b>SO LONG AS</b> the cast bar is flashing red. Otherwise, the skill does nothing.</li>
+                                            <li>Enhancements: This is more of a recent addition to Dawntrail. Rampart and Reprisal, two skills all tanks have, get upgraded in the higher level to have bonus HP Recovery (Rampart) or increased duration (Reprisal)</li>
+                                            
+                                        </ol>
+                                        Tanks, while scary, are often the deciding factor on whether or not you take an avoidable attack or deal bonus damage. They are just as important on the team as your healers or DPS classes.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Paladin'" x-transition>
+                                    <h2>Paladins (Gladiators)</h2>
+                                    <p>
+                                        Gladiators are one of the two starting classes that will "upgrade" into Paladins when you reach level 30. Once you are a Paladin, the name of the game changes dramatically.<br><br>
+                                        For starters, you are the "Gorilla" of tanks. You eat rockets for breakfast and can take a beating, much less deal one back with their flashy attacks. A lot of people in the community like to joke around about Paladins being a Caster when nobody is looking and that is for a reason.<br><br>
+                                        See, Paladins are what I like to call a Hybrid Tank. They can be viable as a tank, with their plethora of mitigation skills they can dance through like a rave in the redwoods, but their main gimick is their Holy spells; more specifically, their casted spells.
+                                        Paladins have two types of casted abilities: One that deals damage, and the other that heals. For Paladins, its imperative that you DO NOT EVER TOUCH THE HEALING SKILL YOU HAVE UNLESS YOU ARE IN SHITS CREEK. Touching Clemency, the Paladin's healing move, is almost certainly a net-loss for your damage and makes the people in your party quite pissy.<br><br>
+                                        Your other spell, which is either Holy Circle, an AOE skill, or Holy Spirit, a single target cast, is the only spell you need to "Cast" during a fight. Obviously, cast Holy Circle if there are more than 2 enemies wailing on you. Both of these, as well as clemency, will become instant casts first once you reach level 64 for your "1-2-3" Combo and again at level 72 for your AOE combo.<br><br>
+                                        Paladins are often sought out during Practice groups for their high survivability on mechanics, often allowing parties to see further into the fight and prepare for them accordingly. They are, however, not the best tanks in terms of damage so they are somewhat frowned upon in clear groups.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Warrior'" x-transition>
+                                    <h2>Warriors (Marauder)</h2>
+                                    <p>
+                                        Marauders are one of the two starting classes that will "upgrade" into Warriors when you reach level 30. Once you are a Warrior, your enemies fear your presence.<br><br>
+                                        For starters, I classify Warriors as a "Green Tank", meaning they play and handle like a healer with tank abilities. You are practically a cockroach when it comes to your moveset and abilities, trading off high defensiveness for brutal offensiveness. The reason I say you play "like a healer" is because of one ability that is single-handedly the most broken ability any tank could have: Raw Intuition.<br><br>
+                                        Raw Intuition is a skill unique to the Warrior that gives you a 10% damage reduction but also allows you to heal for 400 Potency for 6 seconds. Sounds pretty good already, but it gets better. The healing effect is based on the <b>amount of hits</b> you deal, not the damage. Say you are surrounded and near death. You use Raw Intuition and do one AOE ability and suddenly you are back to full HP, without even breaking a sweat. See how busted this skill is? The downside to Raw Intuition is that you need to be level 56 to unlock the skill.<br><br>
+                                        This isn't to say that Warriors struggle early game, far from it. Warriors, who love to break the conformities, get a "1-2-3A/3B" skillset to make up for this. What do I mean by 3A/3B? Warriors can choose to either attack with Storms Eye at level 50 or keep on using Storm's Path at level 26. Storm's Eye grants the user a 10% damage buff for 30 seconds that stacks up to 60 seconds if used back to back. Storm's Path will heal the user with a 250 Potency heal.<br><br>
+                                        Let's say you don't want to heal and just want to damage, well Warrior has some of the most interesting ways to dish out the pain. For example, Warriors get a move called Inner Release, which allows the user to use 3 Fell Cleaves or Decimates without costing your job gauge while also guaranteeing that they are critical and direct hits. It also makes you Stun, Sleep, Bind, Heavy, Knockback, and Draw-in immune during its duration of 15 seconds. This can further be upgraded to allow for a much more devastating attack and a further follow-up hit once you reach level 100.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Dark_Knight'" x-transition>
+                                    <h2>Dark Knight</h2>
+                                    <p>
+                                        Dark Knight is a class that is unlocked during the expansion <b>Heavensward</b>, the first expansion in FFXIV (Author's note here: Technically, Heavensward is the 3rd Expansion in FFXIV, but that is because "A Realm Reborn" which is where you start the game in is the second attempt at FFXIV during its lifetime. Most players call Heavensward the 2nd expansion but chronologically its the 3rd because of the rebrand for the game.) It is unlocked once you have a class at level 50 and visit the trainer in Ishgard, the main hub for Heavensward.<br><br>
+                                        Whereas other classes start at level 1 and you have to work your way up, Dark Knight, and subsequentally all Expansion based characters, are given a higher starting level to allow you to catch up to the expansion content. Dark Knight, in particular, has you starting out at level 30.<br><br>
+                                        Dark Knights specialize in utilizing Mana to dish out some pretty harsh attacks. They are edgy but amazing tanks that often have some of the greatest group survivability coming in second to Warriors. Their main achille's heel comes when they are in single target combat as they struggle a lot more than most of the tanks.<br><br>
+                                        Dark Knights prioritize in reducing magic based attacks while also having some skills to help with normal physical attacks as well. They excel in dungeons, often being a top contendor besides Warriors and their Raw Intuition. They are not as aggressive when it comes to dungeons as most Dark Knight players know their limitations and what they realistically can and can't pull.<br><br>
+                                        In more high end content, Dark Knights have some of the highest damage openers out of any tanks, coming in second place just behind Gunbreakers. The problem arises with them acting as Main Tanks, as their mitigations are more suited towards those who deal Magical damage as opposed to physical damage. This was rectified in Dawntrail, but its still not the best. Don't let that stop you from playing as a Dark Knight, though, as they can still be workable. Just expect to be taking quite the ass beating.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'GunBreaker'" x-transition>
+                                    <h2>Gunbreaker</h2>
+                                    <p>
+                                        Gunbreaker is a class that is unlocked during the expansion <b>Shadowbringers</b> and can be obtained in Gridania once you reach level 60 on a class. This Tank is unique in that it does not require you to be in the Shadowbringers expansion per se, but to merely own the DLC to pick up the quest.<br><br>
+                                        Just like Dark Knight, this class starts at level 60 when you complete the quest for the first time.<br><br>
+                                        Gunbreakers are unique in their own right as they are what I like to call a "Red Tank". Similar to how Warriors are a "Green Tank", Gunbreakers thrive on being the one to deal the ass beating as opposed to recieving it. Don't need to defend if there is nothing to defend against, right?<br><br>
+                                        Gunbreaker's main caveat is the heavy utilization of their job gauge to deal out some mega hits. Once you reach level 70, this is only improved with the ability: Continuation. Sounds exactly like it says on the tin, Continuation allows you to combo off of certain actions and "continue" the chain, this turns some hits which are chains of 3 into a chain of 6 equally painful hits.<br><br>
+                                        The main issue with Gunbreaker isn't a trade off of defense or anything of the sort; Gunbreakers have some pretty powerful mitigations, almost on par with Paladins. The main problem is their heavy reliance on their job gauge. A lot of the time, you are merely doing your "1-2-3" combo in order to build up enough charges to unleash a very devastating <i>burst</i> hit all within your "buff" window which is just a fancy way of saying using an ability that gives you more damage and stacking every single attack into that small window.<br><br>
+                                        Overall, Gunbreakers are some of the most powerful tanks if not for their crippling reliance to their job gauge.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+
+                <div x-show="selectedTab === 'healer'">
+                    <h2>Healers</h2>
+                    <p>
+                        <div x-data="tabContent()" class="tabs-wrapper">
+                            <div class="class-tabs">
+                                <button :class="{ 'active': tab==='General'}" @click="changeTab('General')">General Knowledge</button>
+                                <button :class="{ 'active': tab==='Scholar'}" @click="changeTab('Scholar')">Scholar</button>
+                                <button :class="{ 'active': tab==='White_Mage'}" @click="changeTab('White_Mage')">White Mage</button>
+                                <button :class="{ 'active': tab==='Sage'}" @click="changeTab('Sage')">Sage</button>
+                                <button :class="{ 'active': tab==='Astro'}" @click="changeTab('Astro')">Astrologian</button>
+                            </div>
+
+                            <div class="class-tab" x-ref="scrollArea">
+                                <div x-show="tab === 'General'" x-transition>
+                                    <h2>General Knowledge</h2>
+                                    <p>
+                                        Healers are your lifeblood in the party. These guys, gals, non-binary pals are the reason your face isn't meeting the floor. While healers share similarities, with the most obvious being the ability to heal, they are split into two types of healers; both are invaluable in high-end content.
+                                        <ol>
+                                            <li>Pure Healers: Healers specialized with massive bursts of healing and regeneration</li>
+                                            <li>Barrier Healers: Healers specialized with providing shields to mitigate some damage</li> 
+                                        </ol>
+
+                                        Between these two archetypes of healers, there are some similarites I feel the need to go over:
+                                        <ol>
+                                            <li>Esuna: This is your debuff clear. Some debuffs have a white bar under their icon which allows you to Esuna the debuff off.</li>
+                                            <li>Raise: Not necessarily a skill unique to healers (see Red Mage and Summoner under the Magical DPS tab) but it allows you to bring back a player when they reach 0 HP.</li>
+                                            <li>Rescue: Have someone thats going to get hit and they aren't moving? Want someone to be by your side to eat a hit with you? Want to mess with someone and pull them into the death wall with you? Use Rescue! Side effects may include angry teammates, surecast/arms length usage, and potential kicking from parties.</li>
+                                            <li>One Button Rotation: All healers have a single button for their main damage source.</li>
+                                        </ol>
+
+                                        Other things include: Repose (never used in any content besides the open world), Lucid Dream, Swiftcast, and Surecast. These are not exlcusive to only healers and are shared with the Magical Ranged DPS classes as well.
+                                        
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Scholar'" x-transition>
+                                    <h2>Scholar</h2>
+                                    <p>
+                                        Scholar is a unique class that isn't derived from a single starting class like most classes are, but is actually a choice you can make when the start class "Arcanist" is level 30. You can either choose Scholar or Summoner, a Magic Ranged DPS class. Do note that if you choose one or both, they share EXP, which allows you to level them up simultaneously. This is the only class in the game currently that does this.<br><br>
+                                        Scholar is a barrier healer whose main gimic is to not do anything... I'm not joking about this. They get access to a fairy which will passively heal any injured player nearby every few seconds. You can control the fairy manually or just have it follow you around. In the early days of the game, the fairy could be killed by enemy attacks, but that has since been removed from the game.<br><br>
+                                        Scholar's barriers, or shields as most players call them, are mutually exclusive with another barrier class called 'Sage'. This means that if you have both a Scholar and a Sage on the team, they both will be able to put shields on allies, but they do not stack with one another. Scholar is more defensive focused as a Healer, opting for more heal buffs and effects with their fairy.<br><br>
+                                        This healer is more difficult to get under lock and key the first time through, so I recommend starting this class when you are more comfortable with healers but not too late that you feel overwhelmed with information.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'White_Mage'" x-transition>
+                                    <h2>White Mage (Conjurer)</h2>
+                                    <p>
+                                       Conjurer is one of the starting class that is "upgraded" into White Mage at level 30. Once you become a White Mage, you are going to get carpal tunnel.<br><br>
+                                       White Mage, before I forget, is a Pure Healer whose only job is to put regen on everyone whenever applicable.<br><br>
+                                       I am not kidding you when I say this: White Mage is the easiest to learn but the hardest to master. As a White Mage main when I was going through Stormblood up to Dawntrail (About 4 expansions worth of stuff), I have yet to master the class. A lot of White Mage's utility comes in the form of putting Regenerating effects on your allies while also performing massive heals.<br><br>
+                                       When I say the hardest to master I'm not referring to the usage of abilities, that is just how you learn the class. Its managing your MP bar and not overhealing your teammates whenever you can; That is the struggle with White Mage. The other thing is that joke about Carpel Tunnel, is not actually a joke. This is because of your one damage button rotation, it's down to spamming that button constantly which can cause some strain on your fingers. White Mage players especially have to deal with the brunt of the strain as a majority of their alternate damage moves come at the cost of time.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Sage'" x-transition>
+                                    <h2>Sage</h2>
+                                    <p>
+                                       Sage is a class that is unlocked during the <b>Endwalker</b> expansion and is learned from a trainer in Limsa Lominsa Lower Decks at level 70.<br><br>
+                                       Sage is a barrier healer whose all about alternating between healing and barriers. As the antithesis of Scholar, the Sage is all about damage as this is their main form of healing.<br><br>
+                                       Sage has access to a skill called Kardia, which allows them to put a mark on a player and give them heals depending on how much damage they do. This Kardia can also be applied to yourself, so if it ever gets dicey, use it when there's nobody around; otherwise, keep it on your main tank.<br><br>
+                                       Sage has numerous barrier skills that are best suited for multi-hit mechanics and heals to back them up. Their main benefit is a move called Kerachole which is a damage reduction that is available every 30 seconds. The trade off is that it uses a charge that is only regenerated from time.<br><br>
+                                       Sage has some amazing mobility options as well, allowing for easier traversal over the arena and the ability to damage while moving, something that most casters struggle with. The downside of this is that a lot of their mobility options are gated behind cooldowns or reserved for special situations.<br><br>
+                                       Sage's main downside is that they churn through MP like its halloween candy and you are 7. A lot of Sage's MP recovery is stagnant or negligable in combat so Lucid Dream is your best friend here.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Astro'" x-transition>
+                                    <h2>Astrologian</h2>
+                                    <p>
+                                        Astrologian is a class that is unlocked during the <b>Heavensward</b> expansion and is learned from a trainer in Ishgard at level 50. Once you become an Astrologian, be prepared to make some macros.<br><br>
+                                        Astrologian, shortened to Astro, has an entirely different mechanic compared to the other healers. This class is a Pure healer but its main gimick is all about the Tarot Cards they can draw. The Tarot Cards are specialized buffs that can be given to members of their party for various effects depending on the card. They can also be given to anyone, but have a preferred target.<br><br>
+                                        One of the first things I recommend new Astro players do is to go into their macros page ("/macros" in the chatbox) and make a set of 24 macros; each macro is about targetting a position in your party [1-8] with a drawn card. There are various guides online for them but I have a place where you can copy and paste them from <a href="/Guides/subpages/macros.txt" target="_blank">here</a>. Be aware that this links to a text document for your convienance, not an end-all be-all for how to build your macros.<br><br>
+                                        Astro struggles a lot with healing potential, often struggling in 4 player content if there's a lot of damage being dished out too quickly. Compared to White Mage, its inferior in every way but makes up for it with its party buffs and longer ranged attacks compared to White Mage. Astro is still valuable in high end content because of its buffs, but do be wary that you may be harrassed by some unsavory folk for not healing enough.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+
+                <div x-show="selectedTab === 'melee-dps'">
+                    <h2>Melee DPS</h2>
+                    <p>
+                        Melee DPS has some of the highest hitting potentials in the game, often dancing around the battlefield with such grace that they forget to avoid attacks. Be warned, a lot of DPS players do something called "Greeding" attacks, which means do as much damage as close to the attack's castbar as possible before dodging. Sometimes it works, othertimes your healers are pissy.
+                       <div x-data="tabContent()" class="tabs-wrapper">
+                            <div class="class-tabs">
+                                <button :class="{ 'active': tab==='General'}" @click="changeTab('General')">General Knowledge</button>
+                                <button :class="{ 'active': tab==='Monk'}" @click="changeTab('Monk')">Monk</button>
+                                <button :class="{ 'active': tab==='Ninja'}" @click="changeTab('Ninja')">Ninja</button>
+                                <button :class="{ 'active': tab==='Dragoon'}" @click="changeTab('Dragoon')">Dragoon</button>
+                                <button :class="{ 'active': tab==='Samurai'}" @click="changeTab('Samurai')">Samurai</button>
+                                <button :class="{ 'active': tab==='Reaper'}" @click="changeTab('Reaper')">Reaper</button>
+                                <button :class="{ 'active': tab==='Viper'}" @click="changeTab('Viper')">Viper</button>
+                            </div>
+
+                            <div class="class-tab" x-ref="scrollArea">
+                                <div x-show="tab === 'General'" x-transition>
+                                    <h2>General Knowledge</h2>
+                                    <p>
+                                        Melee DPS is your bread and butter when it comes to dishing out the pain. These classes are some of the best DPS classes out there but often have some of the most complicated damage rotations out there. Between all the Melee DPS classes there are some universal things, so lets quickly cover them:
+                                        <ol>
+                                            <li>Feint: A party wide mitigation that is placed on the enemy to reduce Physical and Magic Damage.</li>
+                                            <li>Bloodbath: A self heal that takes the damage one does and converts it into some minor healing.</li>
+                                            <li>Second Wind: A burst heal that has a pretty steep cooldown. Not as effective as a healers heal.</li>
+                                            <li>True North: A button that ignores positionals for a certain amount of time (10 seconds)</li>
+                                        </ol>
+                                        You may have noticed the term 'Positionals' when I went over True North's ability. That is because this is the main caveat for all the Melee DPS classes: You have to attack certain sections of the boss to deal bonus damage. <br><br>
+                                        The Hall of Novice goes over this way better than I could ever as well as the <a href="https://starter-guide.finalfantasyxiv.com/na">Starter Guide Video Series</a> by Square Enix. In short, there is a circle under any enemy you fight. Split that circle into 4 parts using a cross shape. On the left or right of the enemy is called the 'Flank' while the back is called the 'Rear'. Right directly in front of the enemy is the 'Front' which is reserved for Tanks.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Monk'" x-transition>
+                                    <h2>Monk (Pugilist)</h2>
+                                    <p>
+                                        Pugilist is a starting class that can be "Upgraded" into Monk at level 30. Once you unlock Monk, prepare to fist your enemies to death.<br><br>
+                                        Monks whole playstyle is all about getting in the enemies face and punching them sideways. Just like Gunbreaker, Monks rely fairly heavily on their Job Gauge to dish out some heavy hits. Monks are also good because they can provide party wide buffs such as Mantra which improves HP recovery from healing actions by 10%.<br><br>
+                                        Although I have little experience in playing Monk, I have seen and watched others perform as Monk and its not as difficult as it seems. It may look daunting at first, with all these buttons and buffs to hit, but it flows well once you get the hang of it, as do most of the DPS classes.<br><br>
+                                        Nonk's main downside is that it severely lacks a ranged attack that most if not all classes have. It can gap close into the fight, but it has no form of chip damage that every other class has.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Ninja'" x-transition>
+                                    <h2>Ninja (Rogue)</h2>
+                                    <p>
+                                        Rogue is a starting class that can be "Upgraded" into Ninja at level 30. Once you unlock Ninja, Jin Ten Chi, Chi Jin Ten, Ten Jin Chi.<br><br>
+                                        Ninja has a unique way of doing their attacks. They use Ten, Jin, and Chi to form a pattern and unleash a devastating attack. I think you can kinda see the downside already but lets continue on. They have normal attacks as well, so don't think you need to break out the pen and paper for your rotation just yet.<br><br>
+                                        Ninja can also go invisible and deliver a sort of assassin strike, but it cannot be used during combat so better use it before you get into a fight.<br><br>
+                                        I can probably guess what you are thinking an obvious downside is. If you were guessing their survivability, you are absolutely correct! Ninjas excel in certain types of fights, preferably single target fights. When faced with group fights, especially those that have some pretty hefty requirements of damage, they struggle. Its partially due to their dependence on Ten, Jin, Chi, and the combos they can perform from them. It's a lot of brainpower to do when under stress, so kudos to those that can pull it off.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Dragoon'" x-transition>
+                                    <h2>Dragoon (Lancer)</h2>
+                                    <p>
+                                        Lancer is a starting class that can be "Upgraded" into Dragoon at level 30. Once you unlock Dragoon, better have a healer nearby otherwise stay on the floor.<br><br>
+                                        All joking aside, Dragoon is a pretty reliable DPS. They offer some genuinely good buffs to the party as well as some powerful burst hits that can be used at the end of their combos or can even lead into certain combos.<br><br>
+                                        Dragoons are often made fun of because they have a skill which allows them to backpedal pretty far and fast away from an opponent. Often times, this backpedal puts them into an unfavorable position or outright into a death wall or even off the arena to their deaths. Its joked so heavily that they are constantly given the moniker as "Floor tanks".<br><br>
+                                        Dragoons don't have many downsides worth mentioning. The only big one I can think of is the constant switching of their DPS rotation that it can get confusing when to hit what button. They have a damage over time that needs to be constantly kept up but it has a 24 second timer, which means you need to constantly keep switching between damage and that. Not to mention the need to always be moving to ensure proper damage output and it gets confusing way too fast.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Samurai'" x-transition>
+                                    <h2>Samurai</h2>
+                                    <p>
+                                       Samaurai is a class that is unlocked during <b>Heavensward</b> and is learned from a trainer in Ul'dah at level 50. Once you unlock Samurai, prepare for some... uh... weeb moments? I don't know.<br><br>
+                                       Samaurai is a class that is all about stacking 3 charges to unleash a heavy hit. If done properly, then this DPS class could rival some of the best damaging classes out there. While I have dabbled in a bit of Samaurai content before, I do have one personal gripe with it: There are 3 combo paths to chose from.<br><br>
+                                       See, Samaurai needs to get 3 charges of different actions to unleash their ultimate hit. Problem is, Most classes can have their entire moveset fit into 3 bars with some cohesion. Samaurai has a bit problem with that, as there are 3 pathways to combo their main attack, Hakaze, into.<br><br>
+                                       Aside from my personal downside, Samaurai also has a pretty big downside: this class is a caster. What do I mean by this? Their main attack liajutsu has a cast bar attached to it, meaning you have to stand still to fire off your mega hit. Most of the end game content gives very minimal room for casting, so you have to time your attacks to follow with the flow of the fight, which could mean you are overcapping on certain skills. It also means that if you mistime your attack, you can and will most likely get punished for it.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Reaper'" x-transition>
+                                    <h2>Reaper</h2>
+                                    <p>
+                                       Reaper is a class that is unlocked during <b>Endwalker</b> and is learned from a trainer in Ul'dah at level 70. Once you unlock Reaper, have fun with Coral Blue #4 Lipstick.<br><br>
+                                       Reaper's whole gimick is to have a massive burst of damage once your Job bar reaches max. You are quick, agile, able to dodge and recenter back into the fray. All in all, this class is good for dishing out the pain.<br><br>
+                                       Something I neglected talking about was the class quests for each class. This is deliberately because the class quests contain some important lore bits behind your classes and why you learn it. I highly recommend paying attention to the Reaper questline as it is pretty cool.<br><br>
+                                       Only downside I can think of for this class is the mind-numbing color scheme of the attacks. All your attacks are in this pastel neon blue which can be pretty straining on the eyes. So far, I have yet to see someone actively complain about it, but this is more of a personal downside I feel with the class as opposed to a universally agreed upon downside.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Viper'" x-transition>
+                                    <h2>Viper</h2>
+                                    <p>
+                                        Viper is a class that is unlocked during <b>Dawntrail</b> and is learned from a trainer in Ul'dah at level 80. Once you unlock Viper, don't forget to dodge!<br><br>
+                                        Viper is the newest addition to the cast of Melee DPS' and was the most broken DPS class out there when it first released. It was able to outdamage a lot of the other classes and excelled in group and single combat. With its high speed and devastating combos, it became a force to be reckoned with... until Square Enix nerfed it that is.<br><br>
+                                        Viper specializes in speedy attacks, chaining numerous quick hits in rapid succession. Its attacks change depending on the glowing side of your job gauge, so be mindful of that. They are what we call a "Selfish DPS" because all the buffs they get are exclusively for them and not the party. That, however, is OK for Viper as the damage makes up for the lack of buffs they provide.<br><br>
+                                        The main downside of Viper is that constant switching of attack styles. You don't really have a control over it early game and have to pay close attention to which style is happening. Thankfully the attack names have either Flank or Side in their name so it can kinda make some sense, but if you are not vigilant, you might miss out on some extra damage potential.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+
+                <div x-show="selectedTab === 'phys-range-dps'">
+                    <h2>Physical Ranged DPS</h2>
+                    <p>
+                        Physical Ranged DPS classes excel at dealing damage from a distance using bows, guns, or other ranged weapons.
+                        They have abilities that allow them to maintain distance from enemies while still delivering powerful attacks.
+                        <div x-data="tabContent()" class="tabs-wrapper">
+                            <div class="class-tabs">
+                                <button :class="{ 'active': tab==='General'}" @click="changeTab('General')">General Knowledge</button>
+                                <button :class="{ 'active': tab==='Bard'}" @click="changeTab('Bard')">Bard</button>
+                                <button :class="{ 'active': tab==='Machinist'}" @click="changeTab('Machinist')">Machinist</button>
+                                <button :class="{ 'active': tab==='Dancer'}" @click="changeTab('Dancer')">Dancer</button>
+                                
+                            </div>
+
+                            <div class="class-tab" x-ref="scrollArea">
+                                <div x-show="tab === 'General'" x-transition>
+                                    <h2>General Knowledge</h2>
+                                    <p>
+                                        Ranged DPS are... well, important. They offer some of the best buffs in the game and have the easiest playstyle of any DPS class. I'm hesitant to talk about them as much as I haven't gotten much time around them, so be warned that my claims are purely subjective to personal experience with the classes.<br><br>
+                                        Lets go over some shared traits for them:
+                                        <ol>
+                                            <li>Leg Graze: A move that applies heavy an opponent to slow their movement speed. Doesn't work in a lot of content.</li>
+                                            <li>Pelaton: A movement speed buff. Does not work in combat.</li>
+                                            <li>Second Wind: A burst heal that has a pretty steep cooldown. Not as effective as a healers heal.</li>
+                                            <li>Head graze: An interrupt move similar to the tanks with Interject.</li>
+                                            <li>Foot Graze: A move that binds the opponent, making them unable to move. Does not work in a lot of content.</li>
+                                        </ol>
+                                        See why I am pretty hesitent to talk about them? A lot of their shared traits and utility is ineffective or outright useless in a lot of combat. Sure they can be helpful on the world map or speeding up your allies in between pulls with Pelaton, but other than that its fairly niche cases.
+                                        Not only that, but all Physical Ranged DPS have a "1-maybe 2-sometimes 3" combo. This means that you are spamming your first hit until you get a buff to do a second hit. Rinse and repeat.
+                                    </p>
+                                </div>
+                                <div x-show="tab === 'Bard'" x-transition>
+                                    <h2>Bard (Archer)</h2>
+                                    <p>
+                                        Archer is a starting class that can be "Upgraded" to Bard at level 30. Once you unlock Bard, Megalovania.smf intensifies.<br><br>
+                                        Bard is a purely supportive DPS class. Their whole gimick is to cast musical ballads on their allies and maintain them to keep damage up. They have some of the longest Damage over Time attacks and are pretty relaxed when playing. Don't get too complaicant with them, as they still require some attention.<br><br>
+                                        Bard has a major downside and it is about the musical ballads. You have to constantly keep them up and if you let them drop, its a hassle to re-weave them back into your rotation.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Machinist'" x-transition>
+                                    <h2>Machinist</h2>
+                                    <p>
+                                        Machinist is a class that is unlocked during <b>Heavensward</b> and the trainer can be found in Ishgard at level 50. Once you unlock machinist, time to be the most selfish dps out there.<br><br>
+                                        Machinist is a pretty strong ranged DPS class. It allows you to be a force to be reckoned with on the battlefield. As I said in the line above, you will be quite selfish with your buffs, mainly keeping them to yourself. Its not a bad class if you are willing to go solo.<br><br>
+                                        The main downside with Machinist is, well, the selfishness. While the damage they deal is good, the fact that its counterparts, that being Dancer and Bard, have better teamplay makes the Machinist quite the black sheep here. Its not necessarily a bad thing, but it is out of place with the intended archetype of the Phys Ranged group.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Dancer'" x-transition>
+                                    <h2>Dancer</h2>
+                                    <p>
+                                       Dancer is unlocked during the <b>Shadowbringers</b> expansion and the trainer can be found in Limsa Lominsa at level 60. Once you unlock Dancer, HEEEEEEY MACARANA!<br><br>
+                                       Dancer is one of the most well sought after Phys Range classes solely because of their immense scaling power with their buffs. They have access to two sets of buffs, one party wide and the other buffs their dance partner. They excel in group play and can dish out some serious damage with their attacks and skills.<br><br>
+                                       They also have access to shields on allies after a short amount of time, as well as a heal that is ranged too! It places a healing aura under the dancer and their dance partner, so they can reach some immense versitility during content.<br><br>
+                                       Honestly, there is not any downsides that I can think of when it comes to dancer. They are a pretty versitile class and excel in both single and group scenarios. On top of that, their attacks are visually pleasing to look at.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </p>
+                </div>
+
+                <div x-show="selectedTab === 'mag-range-dps'">
+                    <h2>Magical Ranged DPS</h2>
+                    <p>
+                        Magical Ranged DPS classes harness their MP bar to cast powerful ranged attacks and AOE spells. The main caveat with these classes is that they are generally more fragile and lack a lot of mobility options.
+                        These classes offer some of the highest damage outputs in the game, whilst also boasting some of the coolest spell effects and animations.
+                    </p>
+                    <p>
+                        <div x-data="tabContent()" class="tabs-wrapper">
+                            <div class="class-tabs">
+                                <button :class="{ 'active': tab==='General'}" @click="changeTab('General')">General Knowledge</button>
+                                <button :class="{ 'active': tab==='Summoner'}" @click="changeTab('Summoner')">Summoner</button>
+                                <button :class="{ 'active': tab==='Red_Mage'}" @click="changeTab('Red_Mage')">Red Mage</button>
+                                <button :class="{ 'active': tab==='Black_Mage'}" @click="changeTab('Black_Mage')">Black Mage</button>
+                                <button :class="{ 'active': tab==='Picto'}" @click="changeTab('Picto')">Pictomancer</button>
+                                <button :class="{ 'active': tab==='Blue_Mage'}" @click="changeTab('Blue_Mage')">Blue Mage</button>
+                            </div>
+
+                            <div class="class-tab" x-ref="scrollArea">
+                                <div x-show="tab === 'General'" x-transition>
+                                    <h2>General Knowledge</h2>
+                                    <p>
+                                        Magical Ranged DPS, often call Mag Range, is a type of class that has some fairly long cast times but makes up for it with their heavy hitting spells. They primarily use MP, no shock there, to dish out some pretty punishing hits.<br><br>
+                                        Just like in the other sections, there are some shared traits:
+                                        <ol>
+                                            <li>Sleep: Puts the target to sleep. Very situational and not needed in higher end content</li>
+                                            <li>Addle: Magic and Physical damage mititgation. Very helpful.</li>
+                                            <li>Lucid Dream: Mana Regeneration, pretty standard with the Magic classes (except Dark Knight because why not)</li>
+                                            <li>Surecast: Casts spells without being interrupted. Nullifies Knockback and Draw-in moves. This also includes Rescue from healers.</li>
+                                            <li>Swiftcast: Next spell is casted with no delay. Its pretty valuable to some rotations.</li>
+                                        </ol>
+                                        As stated before, Healers also share a similar pool with the Mag Range, but the difference here is that Swiftcast is not an emergency use case with healers and quickly raising someone. This is more of a use at your leisure.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Summoner'" x-transition>
+                                    <h2>Summoner (Arcanist)</h2>
+                                    <p>
+                                        Summoner is the alternate path from the starter class "Arcanist" which is unlocked at level 30. Once you unlock Summoner, CARBIE!!!<br><br>
+                                        Summoner is the class all about taking the enemies you have been fighting in A Realm Reborn, ARR for short, and using their powers against your enemies. Summoner also has a nice added benefit of also being able to raise dead allies and provide a small heal on account of it sharing an EXP bar with Scholar.<br><br>
+                                        Summoner has a lot of versatility and maneuverability around the battlefield, allowing for some quick attacks and range prowess. Their cast bar is situational depending on the time; some attacks take long to charge up and others don't.<br><br>
+                                        The main downside with Summoner is the inconsistencies with their rotation. A lot of very smart and talented individuals have set up rotations to use at level 100, but nobody seems to understand what to use and when. For instance, its recommended to use swiftcast on one of your spells to avoid the long cast time, but many say its a waste of DPS. The jury is still out on that one.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Red_Mage'" x-transition>
+                                    <h2>Red Mage</h2>
+                                    <p>
+                                        Red Mage is unlocked during the <b>Stormblood</b> expansion and the trainer can be found in Ul'dah at level 50. Once you unlock Red Mage, have fun keeping your bars filled.<br><br>
+                                        Red Mage is a strange one, as opposed to the other mag range, as Red Mage gets swiftcast after every spell cast. This also includes their own version of raise and cure, which is insanely helpful for healers struggling to get their party up.<br><br>
+                                        Red Mage moveset is also strange as it mixes ranged magic into swordsmanship once enough white magic and black magic is filled. They are more akin to a skirmisher, getting into the enemies face then bailing out when enough damage is done. Their moves are flashy and unique, which is also their downside.<br><br>
+                                        As much as I want to give them the win for this one, one of their downsides is their moves; more specifically, their moveset. You have to be constantly hpervigilant on your mana bars on your job gauge to avoid suddenly sputtering out mid combo and being too close for comfort.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Black_Mage'" x-transition>
+                                    <h2>Black Mage (Thaumaturge)</h2>
+                                    <p>
+                                        Thaumaturge is one of the starter classes that can be "Upgraded" into Black Mage at level 30. Once you unlock Black Mage, FIRE IV!<br><br>
+                                        Black Mage, which happens to be Yoshi-P's favorite class (the main producer and designer behind FFXIV who ultimately saved the game from shutdown), is a powerhouse of a caster. Their whole gimic is to switch between fire and ice to deal damage. Before I go into them, I would like you to know that Black Mage was updated recently during Dawntrail to remove their original mechanic of a timer to switch between Fire and Ice, which would have been a massive downside.<br><br>
+                                        Black Mage's Fire is the heavy hitting category for their spells. These spells boast a lot of damage potential and make up the bulk of their damage rotation. The hefty cost in MP makes it unsustainable but this is why you have Ice as well.<br><br>
+                                        Black Mage's Ice is the way to regenerate MP quickly, often giving their full mana bar back with two to three casts. They also have access to some other attacks, which do cost some mana, but they are mostly finishing moves to the Fire combo or are in conjunction with the Fire combo.<br><br>
+                                        Black Mage's biggest downside has to be their lack of mobility. A lot of Black Mage's moves are long casts which leaves you vulnerable to some punishing consequences. Sure they have some mobility options in the form of skills, but they have a cooldown and do nothing once you start casting.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Picto'" x-transition>
+                                    <h2>Pictomancer</h2>
+                                    <p>
+                                        Pictomancer is unlocked during the <b>Dawntrail</b> expansion and the trainer can be found in Gridania at level 80. Once you unlock Pictomancer, DROP THE HAMMER!!<br><br>
+                                        Pictomancer is quite a unique mag range as their whole moveset revolves around painting pictures for your big hits. Most of your skills weave into another skill, so it kind of acts like a phys range if you really squint your eyes.<br><br>
+                                        Pictomancer has a lot of mobility and some buffs for the party as well, making them quite a useful class. Some recent patches and tweaks have nerfed them quite a bit, but they are still pretty strong. They can even contend for damage spots with Melee DPS if you are efficient with your skills.<br><br>
+                                        The main downside with Pictomancer is that they need to spend time drawing their moves on the canvas that is their job gauge. It can be quite the time sink to stand still and draw a set of attacks that you need for your next move. If you are efficient with your timings and choose to cast them during downtime where the boss is either untargetable or out of range, then you can save some DPS. However, the average player does not have the greatest of timings, so its quite the downside.
+                                    </p>
+                                </div>
+
+                                <div x-show="tab === 'Blue_Mage'" x-transition>
+                                    <h2>Blue Mage</h2>
+                                    <p>
+                                        Blue Mage gets an honorable mention here. After ARR's final quest, the Blue Mage quest will unlock called "Out of the Blue". The reason why its not getting much of a section here is because this class is what is called a "Limited Job" meaning that it has a lower level cap and way less activities that it can participate in. More information can be found on limited jobs in the <a href="/Guides/rec-job-guide.html">Recreational Jobs Guide</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+            </div>
+                
         </main>
 
         <div id="footer"></div>

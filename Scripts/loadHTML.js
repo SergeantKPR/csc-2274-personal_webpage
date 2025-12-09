@@ -96,4 +96,10 @@ loadHTML("topbar", "topbar.html", () =>
                 }
             };
             document.body.appendChild(script);
+
+            const alpine = document.createElement("script");
+            alpine.src = "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js";
+            alpine.defer = true;
+            if (document.head.children.namedItem("alpinejs") === null)
+            document.head.appendChild(alpine);
         });

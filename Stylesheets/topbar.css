@@ -1,25 +1,8 @@
-/*===============================
-  HAMBURGER MENU CONTAINER
-  ==============================*/
-body.mobile .nav 
+:root
 {
-    display: none;
-}
+    --topbar-color: #434343;
 
-.force-mobile .nav 
-{
-    display: none !important;
 }
-.force-mobile #hamburger 
-{
-    display: block !important;
-}
-
-.force-desktop #hamburger 
-{
-    display: none !important;
-}
-
 
 /* ============================
    STICKY TOPBAR CONTAINER
@@ -27,12 +10,12 @@ body.mobile .nav
 #topbar 
 {
     position: absolute;
-    top: 100%; /* sits BELOW header */
+    top: 100%; 
     left: 0;
     width: 100%;
     height: 55px;
     z-index: 9999;
-    background-color: var(--topbar-color);
+    background-color: transparent;
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -42,7 +25,6 @@ body.mobile .nav
 
 /* ============================
    NAVIGATION WRAPPER
-   Allows hiding on mobile
    ============================ */
 .nav-wrapper 
 {
@@ -52,7 +34,6 @@ body.mobile .nav
 
 /* ============================
    NAV LIST
-   (Preserved your styles)
    ============================ */
 .nav 
 {
@@ -62,12 +43,12 @@ body.mobile .nav
     gap: clamp(0.25rem, 1vw, 1rem);
     margin: 0;
     padding: 0;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Links */
 .nav a 
 {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     font-family: "Segoe UI", Arial, sans-serif;
     text-align: center;
@@ -75,6 +56,7 @@ body.mobile .nav
     padding: clamp(0.5rem, 0.5vw, 0.8rem) clamp(0.5rem, 1vw, 1rem);
     border-radius: 6px;
     transition: background 0.3s, color 0.3s;
+    text-shadow: 1.5px 1.5px 3px rgb(0, 0, 0);
 }
 
 .nav a:hover,
@@ -85,7 +67,6 @@ body.mobile .nav
     cursor: pointer;
 }
 
-/* Active page link */
 .nav a.active 
 {
     background: #a28655c6;
@@ -98,11 +79,10 @@ body.mobile .nav
    ============================ */
 .dropdown 
 {
-    position: relative; /* allows absolute dropdown */
+    position: relative;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Dropdown button */
 .dropBtn 
 {
     font-size: 16px;
@@ -115,12 +95,11 @@ body.mobile .nav
     cursor: pointer;
 }
 
-/* Dropdown container */
 .dropdown-content 
 {
     display: none;
     position: absolute;
-    top: 100%; /* positions it below button */
+    top: 100%;
     left: 0;
     background-color: white;
     min-width: 200px;
@@ -129,7 +108,6 @@ body.mobile .nav
     z-index: 99999;
 }
 
-/* Dropdown links */
 .dropdown-content a 
 {
     display: block;
@@ -138,17 +116,14 @@ body.mobile .nav
     color: #000000;
     text-decoration: none;
     font-family: "Segoe UI", Arial, sans-serif;
-    border-radius: 0;
     transition: background 0.3s;
 }
 
-/* Hover behavior */
 .dropdown-content a:hover 
 {
     background-color: #ddd;
 }
 
-/* Show menu on hover */
 .dropdown:hover .dropdown-content 
 {
     display: block;
@@ -159,48 +134,95 @@ body.mobile .nav
    ============================ */
 #hamburger 
 {
-    display: none; /* shown only on mobile */
+    display: none; /* Desktop hides this automatically */
     flex-direction: column;
+    position: absolute;
     gap: 5px;
     border: none;
     background: none;
     cursor: pointer;
+
+    z-index: 9999;
 }
 
 #hamburger span 
 {
     width: 25px;
     height: 3px;
-    background-color: white; /* matches your theme */
+    background-color: white;
 }
 
+/* Hide mobile-only content on desktop */
+.mobile-only 
+{
+    display: none !important;
+}
 
+/* Hide desktop-only dropdown on mobile */
+.desktop-only 
+{
+    display: block;
+}
 
-/* ============================
-   MOBILE RESPONSIVE
-   ============================ */
+/* ======================================
+   MOBILE RESPONSIVE (under 900px)
+   ====================================== */
 @media (max-width: 900px) 
 {
+    .desktop-only 
+    {
+        display: none !important;
+    }
 
-    /* hide nav by default */
+    .mobile-only 
+    {
+        display: block !important;
+        width: 100%;
+    }
+
+    .mobile-guides a 
+    {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.069);
+        color: white;
+        font-family: "Segoe UI", Arial, sans-serif;
+        text-decoration: none;
+        margin: 3px 0;
+        border-radius: 4px;
+    }
+
+    .mobile-guides a:hover 
+    {
+        background: rgba(255,255,255,0.2);
+    }
+
+    /* hide desktop nav until menuOpen = true */
     .nav-wrapper 
     {
         position: absolute;
-        top: 55px;  /* directly below sticky topbar */
+        top: 90px;
         left: 0;
         width: 100%;
-        display: none;
+        color: white;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
         flex-direction: column;
         align-items: center;
-        background-color: var(--topbar-color);
-        padding: 15px 0;
-        backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        transition: opacity 0.3s ease;
     }
 
-    /* show when hamburger toggled */
     .nav-wrapper.active 
     {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     /* show hamburger */
@@ -209,13 +231,13 @@ body.mobile .nav
         display: flex;
     }
 
-    /* convert nav to vertical list */
+    /* stack nav vertically */
     .nav 
     {
         flex-direction: column;
         width: 100%;
-        align-items: center;
         gap: 0;
+        backdrop-filter: blur(4px);
     }
 
     .nav a,
@@ -225,21 +247,14 @@ body.mobile .nav
         text-align: center;
     }
 
-    /* dropdown becomes inline under button */
-    .dropdown-content 
+    #topbar{backdrop-filter: blur(0px);}
+
+    /* ====================================
+       REMOVE "Guides" dropdown on mobile
+       ==================================== */
+    .dropdown 
     {
-        position: relative;
-        top: 0;
-        left: 0;
-        box-shadow: none;
-        background: none;
-        min-width: 100%;
+        display: none;
     }
 
-    .dropdown-content a 
-    {
-        padding: 10px 0;
-        background: rgba(255,255,255,0.1);
-        margin: 2px 0;
-    }
 }

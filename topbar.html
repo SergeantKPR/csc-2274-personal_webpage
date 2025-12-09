@@ -10,108 +10,68 @@
 
         <!-- Stylesheet for main page -->
         <link rel="stylesheet" href="/Stylesheets/topbar.css">
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <script src="/Scripts/alpineFunctions.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer id="alpinejs"></script>
     </head>
 
-    <body>
-         <div class="topbar-div"
-         x-data="navbarState()"
-         :class="forcedMode"
-         >
-            <div>
-                <button id="force-toggle" @click='menuOpen = !menuOpen'>
-                    <span x-text="menuOpen ? '✖' : '☰'"></span>
+    <main>
+         <div x-data="{ menuOpen: false }">
+
+            <!-- TOPBAR -->
+            <div id="topbar">
+
+                <!-- Hamburger (mobile only) -->
+                <button id="hamburger"
+                        @click="menuOpen = !menuOpen"
+                        aria-label="Toggle Navigation">
+                    <span></span><span></span><span></span>
                 </button>
+
             </div>
 
-            <ul class="nav" x-show="showDesktopMenu" x-transition>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Guides</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">About Me</a></li>
-            </ul>
+            <!-- NAV MENU -->
+            <div class="nav-wrapper"
+                :class="{ 'active': menuOpen }">
 
-            <!-- Mobile Menu -->
-            <ul class="nav mobile" x-show="showMobileMenu" x-transition>
-                <li><a href="#">This</a></li>
-                <li><a href="#">Should</a></li>
-                <li><a href="#">Be</a></li>
-                <li><a href="#">Different</a></li>
-            </ul>
+                <ul class="nav">
 
-            <button id="mode-toggle" @click="cycleMode">
-                <span x-text="modeLabel"></span>
-            </button>
-            <!-- <div class="nav">
-                <a href="../index.html#mainPage">Home</a>
-                <div class="dropdown">
-                    <button class="dropBtn">Guides 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                    <li><a href="/index.html#page-content">Home</a></li>
 
-                    <div class="dropdown-content">
+                    <!-- DESKTOP DROPDOWN -->
+                    <li class="dropdown desktop-only">
+                        <button class="dropBtn">
+                            Guides <i class="fa fa-caret-down"></i>
+                        </button>
+
+                        <div class="dropdown-content">
+                            <a href="/Guides/content-guide.html#content-guide">Content Guide</a>
+                            <a href="/Guides/class-job-guide.html#class-job">Combat Job Guide</a>
+                            <a href="/Guides/rec-job-guide.html#rec-job-guide">Recreational Job Guide</a>
+                            <a href="/Guides/market-guide.html#market-guide">Marketboard Guide</a>
+                            <a href="/Guides/misc-guide.html#page-content">Miscellaneous Guide</a>
+                            <a href="/Guides/farming-guide.html#farming-guide">Farming Guide</a>
+                        </div>
+                    </li>
+
+                    <!-- MOBILE REPLACEMENT -->
+                    <li class="mobile-guides mobile-only">
                         <a href="/Guides/content-guide.html#content-guide">Content Guide</a>
                         <a href="/Guides/class-job-guide.html#class-job">Combat Job Guide</a>
                         <a href="/Guides/rec-job-guide.html#rec-job-guide">Recreational Job Guide</a>
                         <a href="/Guides/market-guide.html#market-guide">Marketboard Guide</a>
                         <a href="/Guides/misc-guide.html#page-content">Miscellaneous Guide</a>
                         <a href="/Guides/farming-guide.html#farming-guide">Farming Guide</a>
-                    </div>
-                </div>
+                    </li>
 
-                <a href="/Author%20Info/about-me.html#about-me">About Me</a>
-                <a href="/Author%20Info/contact.html#contact-me-form">Contact Me</a>
+                    <li><a href="/Author%20Info/about-me.html#about-me">About Me</a></li>
+                    <li><a href="/Author%20Info/contact.html#contact-me-form">Contact Me</a></li>
+                    <li><a href="../create-account.html#page-content">Create Account</a></li>
 
-                <a href="../create-account.html#page-content">Create Account</a> -->
+                </ul>
             </div>
         </div>
-    </body>
-
+    </main>
+</body>
     <!--  Javascript for responsiveness of topbar -->
     <script src="../Scripts/headerFunctions.js" defer></script>
-
-    <!-- Alpine.js Script -->
-    <script>
-        function navbarState()
-        {
-            return {
-                menuOpen: false,
-                forcedMode: null,
-                isDesktop: false,
-                isMobile: false,
-
-                get isMobile()
-                {
-                    return window.matchMedia("(max-width: 900px)").matches;
-                },
-
-                get modeLabel()
-                {
-                    if (this.forcedMode==='mobile') return "Force Desktop";
-                    if (this.forcedMode==='desktop') return "Force Mobile";
-                    return "Not Selected";
-                },
-
-                get showDesktopMenu() 
-                {
-                    // only show desktop menu if forcedMode is desktop OR we're on desktop and forcedMode is null
-                    this.isDesktop = (this.menuOpen && (this.forcedMode === 'desktop' || (!this.isMobile && this.forcedMode !== 'mobile')));
-                    return this.isDesktop;
-                },
-
-                get showMobileMenu() 
-                {
-                    // only show mobile menu if forcedMode is mobile OR we're on mobile and forcedMode is null
-                    this.isMobile = (this.menuOpen && (this.forcedMode === 'mobile' || (this.isMobile && this.forcedMode !== 'desktop')));
-                    return this.isMobile;
-                },
-
-                cycleMode() {
-                    if (this.forcedMode === null) this.forcedMode = "mobile";
-                    else if (this.forcedMode === "mobile") this.forcedMode = "desktop";
-                    else this.forcedMode = null;
-                }
-            };
-        }
-    </script>
 </html>

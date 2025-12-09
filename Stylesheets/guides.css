@@ -6,6 +6,11 @@ html, body
     min-height: 100%;
 }
 
+#page-content > *:not(.hero)
+{
+    padding: 5%;
+}
+
 body
 {
     font-family: 'Times New Roman', Times, serif;
@@ -150,11 +155,6 @@ h1, h2, h3
     margin-bottom: 1rem;
 }
 
-#page-content *:not(.hero)
-{
-    padding: 0 1%;
-}
-
 .inline-img
 {
     height: 1.5rem;
@@ -205,7 +205,6 @@ dt.info
 .info:nth-of-type(9) {color: hsl(5, 100%, 50%);}
 
 /* Color Gradient for Each Section header of Content Guide to match info's gradient */
-
 #staging-area section:nth-of-type(1):not(.exclude) h2.context {color: hsl(120, 100%, 50%);}
 #staging-area section:nth-of-type(2):not(.exclude) h2.context {color: hsl(105, 100%, 50%);}
 #staging-area section:nth-of-type(3):not(.exclude) h2.context {color: hsl(90, 100%, 50%);}
@@ -232,10 +231,19 @@ dt.info
     display: block;
 }
 
+ol, ul 
+{
+    margin-left: 2em;
+    overflow: visible;
+    list-style-position: outside;
+}
+
 ol, ul > li
 {
     margin-left: 1.25rem;
 }
+
+li::marker {list-style-position: inside;}
 
 .party-comp .dps-comp > li
 {
@@ -248,6 +256,11 @@ img
     height: 1em;
     width: auto;
 }
+
+/* ============================
+    INLINE ROLE ICONS
+   ============================ */
+
 .tanks{ content: url("/Images/tanks.png");}
 .healers{ content: url("/Images/healer.png");}
 .dps{ content: url("/Images/dps.png");}
@@ -255,14 +268,88 @@ img
 .magRange-dps {content: url("/Images/magicalDPS.png");}
 .physRange-dps {content: url("/Images/physicalDPS.png");}
 
-ol, ul 
-{
-    margin-left: 2em;
-    overflow: visible;
-    list-style-position: outside;
-}
+/* ============================
+    COMBAT ROLES STYLING
+   ============================ */
 
-li::marker {list-style-position: inside;}
+   .tab-combat-content
+   {
+        position: relative;
+        display: inline-block;
+   }
+
+   .hover-text
+   {
+        position: absolute;
+        bottom: 1.875rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(0);
+        white-space: nowrap;
+        background: #333;
+        color: #fff;
+        padding: 0.188rem 0.5rem;
+        border-radius: 0.25rem;
+        pointer-events: none;
+
+        opacity: 0;
+        transition: 
+            opacity 400ms ease,
+            transform 400ms ease; 
+
+        z-index: 50;
+   }
+
+   .hover-text.show
+   {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-0.625rem)
+   }
+
+   /* CLASS TABS */
+   .tabs-wrapper
+   {
+        display: flex;
+        border: 1px solid #ccc;
+        background: white;
+        max-height: 25rem;
+   }
+
+   .class-tabs
+   {
+        display: flex;
+        flex-direction: column;
+        width: 11.25rem;
+        border-right: 0.063rem;
+        background: #c12525;
+   }
+
+   .class-tabs button
+   {
+        padding: 0.75rem 1rem;
+        border: none;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+        font-size: 1rem;
+   }
+
+   .class-tabs button:hover
+   {
+        background: #e4e4e4;
+   }
+
+   .class-tabs button.active
+   {
+        background: #d3d3d3;
+        font-weight: bold;
+   }
+
+   .class-tab
+   {
+        flex: 1;
+        padding: 1.25rem;
+        overflow-y: auto;
+   }
 
 /* ============================
    GENERAL RESPONSIVENESS
@@ -379,3 +466,32 @@ html
     .inline-img { height: 1em; }
 }
 
+
+/*============================
+  ALPINE JS STYLING
+    ============================*/
+
+.tab-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.tab-container > .tab-button
+{
+    display: inline-block;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+}
+.tab-container > .tab-button:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.tab-button.active
+{
+    background:hsla(46, 100%, 50%, 0.688);
+    border-radius: 0.313rem;
+}

@@ -1,0 +1,40 @@
+Macros I have made from other people and personally built myself.
+
+Most follow the same format as seen below:
+/micon "[Action Name]" <- This allows me to see what I am casting
+/ac "[Action Name]" <target> <- This allows me to cast an action to a specific person/creature depending on whats inside the carrots.
+[Text of any type] <- Puts text into the current channel the chatbox is selected. For me it defaults to 'Party'.
+
+
+1.) "OH FUCK-SHIT": Macro for Paladin's Cover on other players. This was designed for quick use when I either messed up or someone was going to take something not intended for them, such as a tank buster.
+    /macroicon "cover"
+    /ac "cover" <t>
+    /ac "Rampart"
+    /ac "Bulwark"
+    OH SHIT OH FUCK OH SHIT-FUCK [Covering <t>]
+
+Make sure that if you are copying macros that have a <1-8> that this refers to <1> <2> <3> ... <8>. You NEED to make 8 macros for it.
+
+2.) Astro Macros for Draw 1/2/3: Since Draw has 3 buttons, you need to make 3 draw macros for each of the respective button: Draw 1 / Draw 2 / Draw 3
+    /micon "Draw 1/2/3"
+    /ac "Draw 1/2/3" <1-8>
+
+3.) Blackest Night for Dark Knight
+    /micon "The Blackest Night"
+    /ac "The Blackest Night" <1-8>
+
+4.) Oblation for Dark Knight
+    /micon "Oblation"
+    /ac "Oblation" <1-8>
+
+5.) Intervention for Paladin
+    /micon "Intervention"
+    /ac "Intervention" <1-8>
+
+6.) Nascent Flash for Warrior
+    /micon "Nascent Flash"
+    /ac "Nascent Flash" <1-8>
+
+7.) Synnastry for Astro
+    /micon "Synnastry"
+    /ac "Synnastry" <1-8>
