@@ -32,10 +32,72 @@
                 The majority of the playerbase spends many hours to many months grinding sought after gears and mounts (more in their section) that it can be overwhelming when starting off on what to get and where to get it.
                 In the guides that follow, each section would break down certain aspects of what and where to farm certain items.
             </p>
-            <p>If you are not new to the MMO world, you may have heard something called <dfn><abbr title="Best-in-Slot">BiS</abbr></dfn> being thrown around the communities. These are highly coveted gear pieces that many players attempt to obtain to make their damage numbers reach the absolute best they can.
-            Thankfully, not every piece of gear is BiS and you can get by with a lot less, especially if you are uncomfortable with how "competative" certain activities can be. The beauty of Final Fantasy XIV is that you can gear yourself however you want and still be successful at it. The only thing is that as long as you hit the minimum <dfn><abbr title="Item Level">iLvl</abbr></dfn> requirement, you will be cleared to participate in certain contents.
-
+            <p>
+                If you are not new to the MMO world, you may have heard something called <dfn><abbr title="Best-in-Slot">BiS</abbr></dfn> being thrown around the communities. These are highly coveted gear pieces that many players attempt to obtain to make their damage numbers reach the absolute best they can.
+                Thankfully, not every piece of gear is BiS and you can get by with a lot less, especially if you are uncomfortable with how "competative" certain activities can be. The beauty of Final Fantasy XIV is that you can gear yourself however you want and still be successful at it. The only thing is that as long as you hit the minimum <dfn><abbr title="Item Level">iLvl</abbr></dfn> requirement, you will be cleared to participate in certain contents.
+                A lot of the gear pieces you will be earning can actually be repurposed as well, granting you additional resources and currencies. One such place is the Doman Enclave, unlocked after you have completed <strong>Stormblood</strong> as a psuedo Ishguardian Restoration, which is the hub for early game crafters wanting to speed up their level gains.
             </p>
+
+            <section>
+                <h2>What to farm?</h2>
+                <p>
+                    Farming is inherently and fundamentally required for any MMORPG. You are not excluded just because you crafted the best gear or got the best items; you are constantly spending time and resources getting better and better. Sometimes you find another class is better for certain features or just want to play something different, getting back to on par gearsets as others have been doing it this entire time.
+                    A lot of content could be "classified" as farmable content, but the rewards dictate what you are farming. For example, all of the end game content gives two sets of tomestones, one is uncapped and the other one is weekly capped. You won't spend your time farming the end-game dungeons for gear if the prize of getting your capped tomestones is more beneficial in the long run.
+                </p>
+            </section>
+
+            <section>
+                <h2>Farming Checklist</h2>
+
+                <p>
+                    Below is a list of everything to farm ranging from niche things like Materias to currencies worth getting; these are split into Daily, Weekly, and Unrestricted categories. Daily things to farm reset at <strong><i><span id="dailyResetTime"></span></i></strong> . Weekly things to farm reset at <strong><i><span id="weeklyResetTime"></span></i></strong>.
+                    Both of these are updated to match your local time, so do not worry about changing the time manually to adjust.
+                </p>
+
+                <div class="checkbox-columns">
+                    <div class="checkbox-column">
+                        <h3>Daily Tasks</h3>
+                        <label><input type="checkbox">Allied Society Quests</label>
+                        <label><input type="checkbox">Duty Roulette</label>
+                        <label><input type="checkbox">Tank exclusive Duty Roulette (300 for PLD/WAR/DRK and 200 for GNB)</label>
+                        <label><input type="checkbox">Mini Cactpot</label>
+                        <label><input type="checkbox">The Hunt</label>
+                        <label><input type="checkbox">Grand Company Turn-ins</label>
+                        <label><input type="checkbox">Treasure Hunt (every 18 hours but do it daily for ease of access)</label>
+                        <label><input type="checkbox">Adventure Squadrons Training Courses</label>
+                        <label><input type="checkbox">Cosmic Exploration daily successes</label>
+                        <label><input type="checkbox">Retainer Ventures (every 18 hours but do it daily for ease of access)</label>
+                    </div>
+
+                    <div class="checkbox-column">
+                        <h3>Weekly Tasks</h3>
+                        <label><input type="checkbox">Doman Enclave</label>
+                        <label><input type="checkbox">Savage Content</label>
+                        <label><input type="checkbox">Capped Tomestones (Rotates too frequently to put a name on it)</label>
+                        <label><input type="checkbox">Custom Delivery for Crafters/Gatherers</label>
+                        <label><input type="checkbox">Current Alliance Raid</label>
+                        <label><input type="checkbox">Jumbo Cactpot</label>
+                        <label><input type="checkbox">Fashion Report</label>
+                        <label><input type="checkbox">Wonderous Tails</label>
+                        <label><input type="checkbox">Challenge Log</label>
+                        <label><input type="checkbox">Island Sanctuary</label>
+                        <label><input type="checkbox">Faux Hollows</label>
+                        <label><input type="checkbox">Squadron Missions</label>
+                        <label><input type="checkbox">The Hunt - B Rank Elite Marks</label>
+                    </div>
+
+                    <div class="checkbox-column">
+                        <h3>Unrestricted Tasks</h3>
+                        <label><input type="checkbox">Tomestones of Poetics: Caps at 2000</label>
+                        <label><input type="checkbox">Previous Tiered Tomestones (High End Content): Caps at 2000</label>
+                        <label><input type="checkbox">Dungeon Runs</label>
+                        <label><input type="checkbox">Ocean Fishing: Every 2 hours</label>
+                        <label><input type="checkbox">Wolf Marks/Trophies (PVP)</label>
+                        <label><input type="checkbox">Crafting/Gathering Scrips (Collectables)</label>
+                        <label><input type="checkbox">Bi-Colored Gems (Fate Farming)</label>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <div id="footer"></div>
@@ -43,5 +105,72 @@
         <!-- Linking script to individual js file -->
         <script src="/Scripts/loadHTML.js"></script>
         <script src="/Scripts/title-shifting-hero.js"></script>
+        <script>
+            function updateResetTime(type = daily, elementId) 
+            {
+
+                const now = new Date();
+
+                const resetHourEST = 3;
+                const estOffset = -5 * 60;
+                const localOffset = now.getTimezoneOffset();
+
+                const resetUTC = new Date (
+                    Date.UTC (
+                        now.getFullYear(),
+                        now.getMonth(),
+                        now.getDate(),
+                        resetHourEST + 5,
+                        0,
+                        0
+                    )
+                );
+
+                if (type === "weekly") 
+                {
+                    // Weekly reset: assuming reset is on Tuesday
+                    const resetWeekday = 2; // 0=Sunday, 1=Monday, 2=Tuesday...
+                    const todayWeekday = resetUTC.getUTCDay();
+                    let daysUntilReset = (resetWeekday - todayWeekday + 7) % 7;
+
+                    // If today is reset day but time has passed, schedule for next week
+                    if (daysUntilReset === 0 && now > resetUTC) daysUntilReset = 7;
+
+                        resetUTC.setUTCDate(resetUTC.getUTCDate() + daysUntilReset);
+                } 
+                else 
+                {
+                    // Daily reset: if today’s reset already passed, move to tomorrow
+                    if (now > resetUTC) 
+                    {
+                        resetUTC.setUTCDate(resetUTC.getUTCDate() + 1);
+                    }
+                }
+
+            // Convert UTC reset to user's local time
+            const localReset = new Date(resetUTC.getTime());
+
+            // Format display
+            let options = { hour: '2-digit', minute: '2-digit' };
+            if (type === "weekly") 
+            {
+                options.weekday = 'long'; // Show day for weekly resets
+                
+            }
+
+                document.getElementById(elementId).textContent = localReset.toLocaleTimeString([], options);
+        }
+            //Update the time to display in spans
+            updateResetTime("daily", "dailyResetTime");
+            updateResetTime("weekly", "weeklyResetTime");
+
+            setInterval(() => 
+            {
+                updateResetTime("daily", "dailyResetTime");
+                updateResetTime("weekly", "weeklyResetTime");
+            }
+            , 60000);
+
+        </script>
 
     </body>

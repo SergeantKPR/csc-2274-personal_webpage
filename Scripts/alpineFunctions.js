@@ -43,53 +43,32 @@ function classSelection()
     return {
         selectedTab: 'tank',
 
-        tankSelect() {
-            console.log("Tank tab selected");
-            this.selectedTab = 'tank';
-            console.log(`${this.selectedTab} - Updated`);
-        },
+        tankSelect()       { this.selectedTab = 'tank'; },
+        healerSubSelect()  { this.selectedTab = 'healer'; },
+        meleeDpsSelect()   { this.selectedTab = 'melee-dps'; },
+        physRangeDpsSelect() { this.selectedTab = 'phys-range-dps'; },
+        magRangeDpsSelect()  { this.selectedTab = 'mag-range-dps'; },
 
-        healerSubSelect() {
-            console.log("Healer tab selected");
-            this.selectedTab = 'healer';
-            console.log(`${this.selectedTab} - Updated`);
-        },
+        checkIsActive(name) { return this.selectedTab === name; },
 
-        meleeDpsSelect() {
-            console.log("Melee DPS tab selected");
-            this.selectedTab = 'melee-dps';
-            console.log(`${this.selectedTab} - Updated`);
-        },
+        init() {
+            const hash = window.location.hash.replace("#", "");
 
-        physRangeDpsSelect() {
-            console.log("Physical Ranged DPS tab selected");
-            this.selectedTab = 'phys-range-dps';
-            console.log(`${this.selectedTab} - Updated`);
-        },
-        magRangeDpsSelect() {
-            console.log("Magical Ranged DPS tab selected");
-            this.selectedTab = 'mag-range-dps';
-            console.log(`${this.selectedTab} - Updated`);
-        },
-
-        checkIsActive(tabName) 
-        {
-            switch (this.selectedTab)
+            switch (hash) 
             {
-                case 'tank':
-                    return tabName === 'tank';
-                case 'healer':
-                    return tabName === 'healer';
-                case 'melee-dps':
-                    return tabName === 'melee-dps';
-                case 'phys-range-dps':
-                    return tabName === 'phys-range-dps';
-                case 'mag-range-dps':
-                    return tabName === 'mag-range-dps';
-                default:
-                    return false;
+                case "tank":           this.tankSelect(); break;
+                case "healer":         this.healerSubSelect(); break;
+                case "melee-dps":      this.meleeDpsSelect(); break;
+                case "phys-range-dps": this.physRangeDpsSelect(); break;
+                case "mag-range-dps":  this.magRangeDpsSelect(); break;
             }
-        },
+
+            this.$nextTick(() => 
+            {
+                const el = document.getElementById(hash);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            });
+        }
     };
 }
 

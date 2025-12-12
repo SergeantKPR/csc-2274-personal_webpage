@@ -257,6 +257,21 @@ img
     width: auto;
 }
 
+.checkbox-columns 
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 1rem;
+}
+
+.checkbox-column 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5px;
+}
+
+
 /* ============================
     INLINE ROLE ICONS
    ============================ */
@@ -310,17 +325,17 @@ img
    {
         display: flex;
         border: 1px solid #ccc;
-        background: white;
+        background: rgba(183, 183, 183, 0.5);
         max-height: 25rem;
    }
 
-   .class-tabs
+   .class-tabs 
    {
         display: flex;
         flex-direction: column;
         width: 11.25rem;
         border-right: 0.063rem;
-        background: #c12525;
+        background: #656565d0;
    }
 
    .class-tabs button
@@ -464,6 +479,24 @@ html
 @media (max-width: 400px) 
 {
     .inline-img { height: 1em; }
+}
+
+/* Tablet: Collapse to 2 columns */
+@media (max-width: 700px) 
+{
+    .checkbox-columns 
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small Mobile: Collapse to 1 column */
+@media (max-width: 450px) 
+{
+    .checkbox-columns 
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 

@@ -1,9 +1,3 @@
-<!--   TO DO LIST    -->
-<!--
-    - Add drop down list for areas where class quests can be found
-    - Flesh out different classes
-                     -->
-
 <!DOCTYPE html>
 <meta lang="en-US">
     <head>
@@ -34,7 +28,7 @@
                 <i>Quick addendum before you continue, each class has something called a Job Gauge. This gauge is a visual indicator for when you can use certain abilities or skills at the cost of a currency that will be visible on the gauge. When prompted, I suggest you read what your gauge does as each class is different.</i>
             </p>
 
-            <div class="tab-container" x-data="classSelection()" x-init="console.log('Alpine.js initialized for class selection')">
+            <div class="tab-container" x-data="classSelection()" x-init="init()">
 
                 <!-- TANKS -->
                 <div class="tab-button"
@@ -128,7 +122,7 @@
                     </div>
                 </div>
             
-                <div x-show="selectedTab === 'tank'">
+                <div id="Tank" x-show="selectedTab === 'tank'">
                     <h2>Tanks</h2>
                     <p>
                         Tanks are the heavy bullet-sponges in the battles. Their job is to ensure that you do not die to a random attack or get punished for trying to kill an enemy.
@@ -214,7 +208,7 @@
                     </p>
                 </div>
 
-                <div x-show="selectedTab === 'healer'">
+                <div id="Healer" x-show="selectedTab === 'healer'">
                     <h2>Healers</h2>
                     <p>
                         <div x-data="tabContent()" class="tabs-wrapper">
@@ -293,7 +287,7 @@
                     </p>
                 </div>
 
-                <div x-show="selectedTab === 'melee-dps'">
+                <div id="MeleeDPS" x-show="selectedTab === 'melee-dps'">
                     <h2>Melee DPS</h2>
                     <p>
                         Melee DPS has some of the highest hitting potentials in the game, often dancing around the battlefield with such grace that they forget to avoid attacks. Be warned, a lot of DPS players do something called "Greeding" attacks, which means do as much damage as close to the attack's castbar as possible before dodging. Sometimes it works, othertimes your healers are pissy.
@@ -384,7 +378,7 @@
                     </p>
                 </div>
 
-                <div x-show="selectedTab === 'phys-range-dps'">
+                <div id="PhysRangeDPS" x-show="selectedTab === 'phys-range-dps'">
                     <h2>Physical Ranged DPS</h2>
                     <p>
                         Physical Ranged DPS classes excel at dealing damage from a distance using bows, guns, or other ranged weapons.
@@ -448,7 +442,7 @@
                     </p>
                 </div>
 
-                <div x-show="selectedTab === 'mag-range-dps'">
+                <div id="MagRangeDPS" x-show="selectedTab === 'mag-range-dps'">
                     <h2>Magical Ranged DPS</h2>
                     <p>
                         Magical Ranged DPS classes harness their MP bar to cast powerful ranged attacks and AOE spells. The main caveat with these classes is that they are generally more fragile and lack a lot of mobility options.
